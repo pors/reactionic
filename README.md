@@ -1,2 +1,0 @@
-# reactionic
-React Ionic
