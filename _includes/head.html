@@ -25,12 +25,12 @@
   
   {% if page.common-css %}
     {% for css in page.common-css %}
-      <link rel="stylesheet" href="{{ css | prepend: site.baseurl | replace: '//', '/' }}" />
+      <link rel="stylesheet" href="{{ css }}" />
     {% endfor %}
   {% endif %}
   {% if layout.common-css %}
     {% for css in layout.common-css %}
-      <link rel="stylesheet" href="{{ css | prepend: site.baseurl | replace: '//', '/' }}" />
+      <link rel="stylesheet" href="{{ css }}" />
     {% endfor %}
   {% endif %}  
   
@@ -58,12 +58,12 @@
   
   {% if page.css %}
     {% for css in page.css %}
-      <link rel="stylesheet" href="{{ css | prepend: site.baseurl | replace: '//', '/' }}" />
+      <link rel="stylesheet" href="{{ css }}" />
     {% endfor %}
   {% endif %}
   {% if layout.css %}
     {% for css in layout.css %}
-      <link rel="stylesheet" href="{{ css | prepend: site.baseurl | replace: '//', '/' }}" />
+      <link rel="stylesheet" href="{{ css }}" />
     {% endfor %}
   {% endif %}
   
