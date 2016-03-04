@@ -1,0 +1,87 @@
+---
+layout: page
+title: React-Ionic
+subtitle: Create iOS and Android apps with React and Ionic
+---
+
+<div class="main-explain-area jumbotron">
+  <h2>React and Ionic: a Perfect Match</h2>
+  
+  <p><a href="https://facebook.github.io/react/">React</a> and <a href="http://ionicframework.com/">Ionic</a> are a great combination:</p>
+  
+  <ul>
+    <li>React is the <strong>best thing ever</strong> that happened to front-end development</li>
+    <li>Ionic allows you to <strong>quickly build iOS and Android apps</strong> that are indistinguishable from native apps.</li>
+  </ul>
+
+  <h2 id="demo">Kitchen Sink Demo</h2>
+  <p>
+    <div class="tiny"><a src="#">Show demo</a></div>
+  </p>
+  <div class="device no-tiny">
+    <div class="platform-switcher">
+      <a href="#" data-platform="iOS" class="platform-ios selected">
+        <i class="fa fa-apple"></i>
+      </a>
+      <a href="#" data-platform="Android" class="platform-android">
+        <i class="fa fa-android"></i>
+      </a>
+    </div>
+    <iframe class="device-content" src="https://app.pors.net/" border=0></iframe>
+  </div>  
+  
+  <h2>Is this for me?</h2>
+  
+  <p>React-Ionic is useful for you if:</p>
+  
+  <ul>
+    <li>You want to create an iOS and/or Android app coding in <strong>Javascript</strong>.</li>
+    <li>You like <strong>React</strong>, or don't mind learning it (you won't regret it; ask me how to get started).</li>
+    <li>Optionally: You use <strong>Meteor</strong> (this is basically a clone of <a href="http://meteoric.github.io/">Meteoric</a>, but without a dependency on Meteor).</li>
+  </ul>
+  
+  <div class="get-started-wrap">
+    <a class="btn btn-default btn-lg get-started-btn" href="https://github.com/pors/reactionic#readme">Get Started!</a>
+  </div>
+</div>
+
+<div class="posts-list">
+  {% for post in paginator.posts %}
+  <article class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+	  <h2 class="post-title">{{ post.title }}</h2>
+	
+	  {% if post.subtitle %}
+	  <h3 class="post-subtitle">
+	    {{ post.subtitle }}
+	  </h3>
+	  {% endif %}  
+    </a>
+
+    <p class="post-meta">
+      Posted on {{ post.date | date: "%B %-d, %Y" }}
+    </p>
+  
+    <div class="post-entry">
+      {{ post.content | truncatewords: 50 | strip_html | xml_escape}}
+	  <a href="{{ post.url | prepend: site.baseurl }}" class="post-read-more">Read More</a>
+    </div>
+  
+   </article>
+  {% endfor %}
+</div>
+
+{% if paginator.total_pages > 1 %}
+<ul class="pager main-pager">
+  {% if paginator.previous_page %}
+  <li class="previous">
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+  </li>
+  {% endif %}
+  {% if paginator.next_page %}
+  <li class="next">
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+  </li>
+  {% endif %}
+</ul>
+{% endif %}
