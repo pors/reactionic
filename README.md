@@ -47,7 +47,7 @@ A detailed description of each component can be found in the [guide](https://git
 
 ## Contribute
 
-I need you help to improve this library.
+I need your help to improve this library.
 
 * If you want to patch a bug: create a [pull request]()
 * If you want to make a more substantial contribution, please **contact me**: mark (a) pors.net
