@@ -1,0 +1,139 @@
+import React from 'react';
+import classnames from 'classnames';
+import {IonModalContainer} from './ionModal';
+import IonBackdrop from './ionBackdrop';
+import IonLoading from './ionLoading';
+import IonKeyboard from '../helpers/keyboard';
+
+var IonBody = React.createClass({
+  propTypes: {
+    platform: React.PropTypes.object
+  },
+  getDefaultProps: function() {
+    return {
+      platform: {
+        isIOS: false,
+        isAndroid: false,
+        isCordova: false,
+        transitionTimeOut: 450,
+        name: 'Web'
+      }
+    };
+  },
+  getInitialState: function() {
+    return {
+      ionNavDirection: 'forward', // can be either forward or back, only used for IonNav* components
+      ionModal: false, // can be either false or contain the modal node (or name? @@@)
+      ionBackdrop: false,
+      ionLoading: false,
+      ionKeyboardHeight: 0
+    };
+  },
+  ionSetTransitionDirection: function(direction) {
+    // Used for setting the transition direction of the page change animations
+    // Only used for IonNav* components, but the state needs to be kept here because the IonNavBar is
+    // only encapsulated by IonBody
+    if(this.state.ionNavDirection != direction) {
+      this.setState({ionNavDirection: direction});
+    }
+  },
+  ionShowModal(modal) {
+    if (modal && React.isValidElement(modal)) {
+      // add the ionShowModal etc methods to the IonModal
+      modal = React.cloneElement(modal, {
+        ionShowModal: this.ionShowModal,
+        ionKeyboardHeight: this.state.ionKeyboardHeight,
+        platform: this.props.platform
+      });
+    }
+    this.setState({
+      ionModal: modal
+    });
+  },
+  ionShowBackdrop(show) {
+    this.setState({ ionBackdrop: show });
+  },
+  ionShowLoading(show, options={}) {
+    if (show) {
+      this.setState({
+        ionLoading: options
+      });
+    } else {
+      this.setState({
+        ionLoading: false
+      });
+    }
+  },
+  componentWillReceiveProps(nextProps, nextContext) {
+    // close modal etc. when navigating away from page (e.g. with browser back button)
+    if (nextContext.location.pathname !== this.context.location.pathname) {
+      if (this.state.ionModal) { this.ionShowModal(false); }
+      if (this.state.ionBackdrop) { this.ionShowBackdrop(false); }
+      if (this.state.ionLoading) { this.ionShowLoading(false); } // @@@@@@@@@@@@@@@@ maybe not?
+    }
+  },
+  handleKeyboard: function(e) {
+    var kbHeight = e && e.keyboardHeight;
+    this.setState({ionKeyboardHeight: kbHeight}, function() {
+      var currentModal = this.state.ionModal;
+      if (currentModal) {
+        // re-render modal to include new state
+        this.ionShowModal(currentModal);
+      }
+    });
+  },
+  componentDidMount: function() {
+    window.addEventListener('native.keyboardshow', this.handleKeyboard);
+    window.addEventListener('native.keyboardhide', this.handleKeyboard);
+  },
+  componentWillUnmount: function() {
+    window.removeEventListener('native.keyboardshow', this.handleKeyboard);
+    window.removeEventListener('native.keyboardhide', this.handleKeyboard);
+  },
+  render() {
+    var platform = this.props.platform;
+    var keyboard = false;
+    if (platform.isCordova) {
+      keyboard = IonKeyboard(platform);
+      keyboard.disableScroll();
+    }
+    var classes = classnames({
+      'ionic-body': true,
+      'grade-a': true, // needs improvement https://github.com/delta98/ionic-platform-body-classes
+      'platform-cordova': platform.isCordova,
+      'platform-ios': platform.isIOS,
+      'platform-android': platform.isAndroid,
+      'modal-open': this.state.ionModal,
+      'keyboard-open': this.state.ionKeyboardHeight
+    });    
+    return (
+      <div className={classes}>
+          {React.cloneElement(this.props.children, {
+            platform: platform,
+            keyboard: keyboard,
+            ionSetTransitionDirection: this.ionSetTransitionDirection,
+            ionNavDirection: this.state.ionNavDirection,
+            ionModal: this.state.ionModal,
+            ionShowModal: this.ionShowModal,
+            ionShowBackdrop: this.ionShowBackdrop,
+            ionShowLoading: this.ionShowLoading,
+            ionKeyboardHeight: this.state.ionKeyboardHeight
+           })}
+        <IonModalContainer>{this.state.ionModal}</IonModalContainer>
+        <IonBackdrop show={this.state.ionBackdrop} />
+        <IonLoading
+            show={this.state.ionLoading}
+            ionShowLoading={this.ionShowLoading}
+            ionShowBackdrop={this.ionShowBackdrop} ></IonLoading>
+      </div>
+    );
+  }
+});
+
+IonBody.contextTypes = {
+  location: React.PropTypes.object
+}
+
+export default IonBody;
+
+//         <a className="button" style={ {zIndex:100} } onClick={this.ionShowLoading.bind(null, false)}>Stop Loading</a>

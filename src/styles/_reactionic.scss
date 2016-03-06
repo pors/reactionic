@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+// React doesn't like custom properties in JSX, see [JSX Gotchas](https://facebook.github.io/react/docs/jsx-gotchas.html), so we overwrite the transactions with an older class based version
+$ionicons-font-path: "/fonts";
+
+@import
+	"../ionic-scss/_ionic.scss",
+	"slick-theme",
+	"slick",
+	"animations-overwrite",
+	"transitions-overwrite",
+	"styles";
+

@@ -1,0 +1,43 @@
+.card {
+    cursor: pointer;
+}
+
+.slick-slider, .slick-list, .slick-track {
+    height: 100%;
+}
+
+.slider-pager {
+    bottom: 20px;
+}
+
+// use this class instead of overflow-scroll
+.slider-content-fix {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+// Hack to use ReactCSSTransitionGroup for backdrop
+.backdrop.backdrop-invisible {
+    visibility: hidden;
+    opacity: 0;
+}
+.backdrop.backdrop-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+// fix to align spinner in loading element
+.inloader.spinner svg {
+    margin-bottom: -4px;
+}
+
+// Hack to use ReactCSSTransitionGroup for loading
+.loading-container.loading-invisible {
+    visibility: hidden;
+    opacity: 0;
+}
+.loading-container.loading-visible {
+    visibility: visible;
+    opacity: 1;
+}

@@ -1,0 +1,51 @@
+// Slide up from the bottom, used for modals
+.modal-slide-in-up {
+
+}
+.modal-slide-in-up.modal-enter,
+.modal-slide-in-up > .modal-enter {
+	@include translate3d(0, 100%, 0);
+}
+.modal-slide-in-up.modal-enter-active,
+.modal-slide-in-up > .modal-enter-active {
+	@include translate3d(0, 0, 0);
+	@include transition(all cubic-bezier(.1, .7, .1, 1) 400ms);
+}
+
+.modal-slide-in-up.modal-leave,
+.modal-slide-in-up > .modal-leave {
+	@include translate3d(0, 0, 0);
+}
+
+.modal-slide-in-up.modal-leave-active,
+.modal-slide-in-up > .modal-leave-active {
+	@include translate3d(0, 100%, 0);
+	@include transition(all ease-in-out 250ms);
+}
+
+// Scale Out
+// Scale from hero (1 in this case) to zero
+// -------------------------------
+
+@-webkit-keyframes scaleOut {
+	from { -webkit-transform: scale(1); opacity: 1; }
+	to { -webkit-transform: scale(0.8); opacity: 0; }
+}
+@keyframes scaleOut {
+	from { transform: scale(1); opacity: 1; }
+	to { transform: scale(0.8); opacity: 0; }
+}
+
+
+// Super Scale In
+// Scale from super (1.x) to duper (1 in this case)
+// -------------------------------
+
+@-webkit-keyframes superScaleIn {
+	from { -webkit-transform: scale(1.2); opacity: 0; }
+	to { -webkit-transform: scale(1); opacity: 1 }
+}
+@keyframes superScaleIn {
+	from { transform: scale(1.2); opacity: 0; }
+	to { transform: scale(1); opacity: 1; }
+}

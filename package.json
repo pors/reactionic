@@ -1,0 +1,50 @@
+{
+  "name": "reactionic",
+  "version": "0.1.0",
+  "description": "React Ionic Library. Use Ionic to build hybrid mobile apps with React. No Angular needed.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "rm -rf dist && mkdir dist && mkdir dist/scss",
+    "build:babel": "babel src --out-dir dist",
+    "build:assets": "cp -a src/ionic-scss src/styles dist/scss/.",
+    "build": "npm run build:assets && npm run build:babel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pors/reactionic.git"
+  },
+  "keywords": [
+    "React",
+    "Ionic",
+    "Hybrid",
+    "Mobile",
+    "Cordova",
+    "Phonegap",
+    "Meteor",
+    "react-component"
+  ],
+  "author": "Mark Pors <npm@pors.net> (http://pors.net/)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/pors/reactionic/issues"
+  },
+  "homepage": "http://pors.github.io/reactionic/",
+  "dependencies": {
+    "classnames": "^2.2.3",
+    "lodash": "^4.5.1",
+    "react": "^0.14.7",
+    "react-addons-css-transition-group": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "history": "^1.17.0",
+    "react-router": "^1.0.2",
+    "react-slick": "^0.10.0",
+    "react-static-container": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.5.1",
+    "babel-plugin-transform-object-rest-spread": "6.5.0",
+    "babel-preset-es2015": "6.5.0",
+    "babel-preset-react": "6.5.0"
+  }
+}
