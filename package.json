@@ -1,13 +1,13 @@
 {
   "name": "reactionic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Ionic Library. Use Ionic to build hybrid mobile apps with React. No Angular needed.",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "rm -rf dist && mkdir dist && mkdir dist/scss",
     "build:babel": "babel src --out-dir dist",
-    "build:assets": "cp -a src/ionic-scss src/styles dist/scss/.",
+    "build:assets": "cp -a src/ionic-scss src/styles src/fonts dist/scss/.",
     "build": "npm run build:assets && npm run build:babel"
   },
   "repository": {
