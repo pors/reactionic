@@ -1,16 +1,16 @@
 import React from 'react';
 import classnames from 'classnames';
-import RouteCSSTransitionGroup from '../helpers/animate'
+import RouteCSSTransitionGroup from '../helpers/animate';
 
 var IonNavView = React.createClass({
   propTypes: {
     customClasses: React.PropTypes.string,
-    platform: React.PropTypes.object,
+    platform: React.PropTypes.object
   },
   getDefaultProps: function() {
     // no need to set default platform and ionSetTransitionDirection as it is propogated from IonBody
     return {
-      customClasses: '',
+      customClasses: ''
     };
   },
   render() {

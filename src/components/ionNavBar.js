@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import IonTitle from './ionTitle';
 import RouteCSSTransitionGroup from '../helpers/animate';
+import { LeftButtonContainer } from '../helpers/containers';
 
 var IonNavBar = React.createClass({
   propTypes: {
@@ -30,29 +30,14 @@ var IonNavBar = React.createClass({
       marginCompensation: 0
     };
   },
-  componentDidMount: function () {
+  setMarginCompensation: function(width) {
     if (this.props.platform.isAndroid) {
-      // hack to circumvent bad css, calculate width of leftButton (if any)
-      // and add margin to the title. Two times, because of slow rendering
-      var mountedLeftButton = this.refs['leftButton'];
-      if (mountedLeftButton) {
-        var setMarginCompensation = function () {
-          var width = ReactDOM.findDOMNode(mountedLeftButton).getBoundingClientRect().width;
-          this.setState({'marginCompensation': Math.ceil(width) + 5 });
-        };
-        setMarginCompensation();
-        setTimeout(setMarginCompensation.bind(this), 200);
-      }
+      this.setState({'marginCompensation': Math.ceil(width) + 10 });
     }
   },
   render() {
     var platform = this.props.platform;
     var leftButton = this.props.leftButton;
-    if (leftButton && platform.isAndroid) {
-      // Add a reference to leftButton so we can find it when componentDidMount
-//      leftButton = React.cloneElement(leftButton, { ref: 'leftButton' });
-    }
-
     var classes = classnames(
       {'bar': true, 'bar-header': true},
       this.props.customClasses || 'bar-stable', // default class
@@ -76,8 +61,8 @@ var IonNavBar = React.createClass({
             transitionLeave={false}
         >
 
+        <LeftButtonContainer setMarginCompensation={this.setMarginCompensation}>{leftButton}</LeftButtonContainer>
 
-      {leftButton}
         </RouteCSSTransitionGroup>
 
         <RouteCSSTransitionGroup

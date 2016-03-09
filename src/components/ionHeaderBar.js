@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
-import SetTimeoutMixin from '../helpers/timeout.js'
 import IonTitle from './ionTitle';
+import { LeftButtonContainer } from '../helpers/containers';
 
 var IonHeaderBar = React.createClass({
   propTypes: {
@@ -27,22 +26,11 @@ var IonHeaderBar = React.createClass({
   getInitialState() {
     return {
       marginCompensation: 0
-    }
+    };
   },
-  mixins: [SetTimeoutMixin],
-  componentDidMount: function () {
+  setMarginCompensation: function(width) {
     if (this.props.platform.isAndroid) {
-      // hack to circumvent bad css, calculate width of leftButton (if any)
-      // and add margin to the title. Two times, because of slow rendering
-      var mountedLeftButton = this.refs['leftButton'];
-      if (mountedLeftButton) {
-        var setMarginCompensation = function () {
-          var width = ReactDOM.findDOMNode(mountedLeftButton).getBoundingClientRect().width;
-          this.setState({'marginCompensation': Math.ceil(width) + 5 });
-        }
-        setMarginCompensation();
-        this.setTimeout(setMarginCompensation.bind(this), 200);
-      }
+      this.setState({'marginCompensation': Math.ceil(width) + 10 });
     }
   },
   render() {
@@ -59,7 +47,7 @@ var IonHeaderBar = React.createClass({
     );
     return (
       <div className={ classes } >
-        {leftButton}
+        <LeftButtonContainer setMarginCompensation={this.setMarginCompensation}>{leftButton}</LeftButtonContainer>
         <IonTitle marginCompensation={this.state.marginCompensation}>
           { this.props.title }
         </IonTitle>
