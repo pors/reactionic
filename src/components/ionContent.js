@@ -5,24 +5,24 @@ var IonContent = React.createClass({
   propTypes: {
     customClasses: React.PropTypes.string,
     scroll: React.PropTypes.bool,
-    hasHeader: React.PropTypes.bool,
-    hasSubheader: React.PropTypes.bool,
-    hasTabs: React.PropTypes.bool,
-    hasTabsTop: React.PropTypes.bool,
-    hasFooter: React.PropTypes.bool,
-    hasSubfooter: React.PropTypes.bool,
+    ionHasHeader: React.PropTypes.bool,
+    ionHasSubheader: React.PropTypes.bool,
+    ionHasTabs: React.PropTypes.bool,
+    ionHasTabsTop: React.PropTypes.bool,
+    ionHasFooter: React.PropTypes.bool,
+    ionHasSubfooter: React.PropTypes.bool,
     ionKeyboardHeight: React.PropTypes.number
   },
   getDefaultProps: function() {
     return {
       customClasses: '',
       scroll: true,
-      hasHeader: false,
-      hasSubheader: false,
-      hasTabs: false,
-      hasTabsTop: false,
-      hasFooter: false,
-      hasSubfooter: false,
+      ionHasHeader: false,
+      ionHasSubheader: false,
+      ionHasTabs: false,
+      ionHasTabsTop: false,
+      ionHasFooter: false,
+      ionHasSubfooter: false,
       ionKeyboardHeight: 0
     };
   },
@@ -32,12 +32,12 @@ var IonContent = React.createClass({
       this.props.customClasses,
       {
         'overflow-scroll': (this.props.scroll !== false),
-        'has-header': this.props.hasHeader,
-        'has-subheader': this.props.hasSubheader,
-        'has-tabs': this.props.hasTabs,
-        'has-tabs-top': this.props.hasTabsTop,
-        'has-footer': this.props.hasFooter,
-        'has-subfooter': this.props.hasSubfooter
+        'has-header': this.props.ionHasHeader,
+        'has-subheader': this.props.ionHasSubheader,
+        'has-tabs': this.props.ionHasTabs,
+        'has-tabs-top': this.props.ionHasTabsTop,
+        'has-footer': this.props.ionHasFooter,
+        'has-subfooter': this.props.ionHasSubfooter
       }
     );
     var divStyle = {};
@@ -47,7 +47,7 @@ var IonContent = React.createClass({
 
     var outerClasses = classnames(
       'scroll-content ionic-scroll',
-      { 'ios-top-margin': !this.props.hasHeader }
+      { 'ios-top-margin': !this.props.ionHasHeader }
     );
 
     var children;

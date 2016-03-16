@@ -1,22 +1,31 @@
 import React from 'react';
 import classnames from 'classnames';
+import { Lifecycle } from 'react-router';
 
 var IonFooterBar = React.createClass({
   propTypes: {
     customClasses: React.PropTypes.string,
-    hasTabs: React.PropTypes.bool
+    ionUpdateHasX: React.PropTypes.func.isRequired,
+    ionHasTabs: React.PropTypes.bool
   },
   getDefaultProps: function() {
     return {
       customClasses: '',
-      hasTabs: false
+      ionHasTabs: false
     };
+  },
+  componentWillMount: function() {
+    this.props.ionUpdateHasX('ionHasFooter', true);
+  },
+  mixins: [ Lifecycle ],
+  routerWillLeave(nextLocation) {
+    this.props.ionUpdateHasX('ionHasFooter', false);
   },
   render() {
     var classes = classnames(
       {'bar': true, 'bar-footer': true},
       this.props.customClasses || 'bar-stable', // default class
-      {'has-tabs': this.props.hasTabs}
+      {'has-tabs': this.props.ionHasTabs}
     );
     return (
       <div className={ classes } >
@@ -27,8 +36,3 @@ var IonFooterBar = React.createClass({
 });
 
 export default IonFooterBar;
-
-
-// to make it dynamic: call method to set hasFooter to true
-// and on destroy again to false, see lifecycle events
-// @@@@@@@@@@@@@@@@

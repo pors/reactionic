@@ -11,6 +11,20 @@ var IonTabs = React.createClass({
       customClasses: ''
     };
   },
+  componentWillMount: function() {
+    if (this.props.platform.isAndroid) {
+      this.props.ionUpdateHasX('ionHasTabsTop', true);
+    } else {
+      this.props.ionUpdateHasX('ionHasTabs', true);
+    }
+  },
+  componentWillUnmount: function() {
+    if (this.props.platform.isAndroid) {
+      this.props.ionUpdateHasX('ionHasTabsTop', false);
+    } else {
+      this.props.ionUpdateHasX('ionHasTabs', false);
+    }
+  },
   render() {
     var platform = this.props.platform;
 
@@ -29,5 +43,3 @@ var IonTabs = React.createClass({
 });
 
 export default IonTabs;
-
-// @@@@@@@@@@@@@@@@ implement dynamic stuff, see https://github.com/meteoric/meteor-ionic/blob/master/components/ionTabs/ionTabs.js

@@ -37,5 +37,3 @@ var IonTab = React.createClass({
 });
 
 export default IonTab;
-
-// @@@@@@@@@@@@@@@@ implement dynamic stuff, see https://github.com/meteoric/meteor-ionic/blob/master/components/ionTab/ionTab.js

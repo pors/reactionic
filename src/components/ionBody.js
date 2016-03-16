@@ -23,10 +23,16 @@ var IonBody = React.createClass({
   getInitialState: function() {
     return {
       ionNavDirection: 'forward', // can be either forward or back, only used for IonNav* components
-      ionModal: false, // can be either false or contain the modal node (or name? @@@)
+      ionModal: false, // can be either false or contain the modal node
       ionBackdrop: false,
       ionLoading: false,
-      ionKeyboardHeight: 0
+      ionKeyboardHeight: 0,
+      ionHasTabs: false,
+      ionHasTabsTop: false,
+      ionHasHeader: false,
+      ionHasSubheader: false,
+      ionHasFooter: false,
+      ionHasSubfooter: false
     };
   },
   ionSetTransitionDirection: function(direction) {
@@ -64,12 +70,17 @@ var IonBody = React.createClass({
       });
     }
   },
+  ionUpdateHasX: function(hasX, value) {
+    if (hasX in this.state) {
+      this.setState({ [hasX]: value });
+    }
+  },
   componentWillReceiveProps(nextProps, nextContext) {
     // close modal etc. when navigating away from page (e.g. with browser back button)
     if (nextContext.location.pathname !== this.context.location.pathname) {
       if (this.state.ionModal) { this.ionShowModal(false); }
       if (this.state.ionBackdrop) { this.ionShowBackdrop(false); }
-      if (this.state.ionLoading) { this.ionShowLoading(false); } // @@@@@@@@@@@@@@@@ maybe not?
+      if (this.state.ionLoading) { this.ionShowLoading(false); }
     }
   },
   handleKeyboard: function(e) {
@@ -117,7 +128,14 @@ var IonBody = React.createClass({
             ionShowModal: this.ionShowModal,
             ionShowBackdrop: this.ionShowBackdrop,
             ionShowLoading: this.ionShowLoading,
-            ionKeyboardHeight: this.state.ionKeyboardHeight
+            ionKeyboardHeight: this.state.ionKeyboardHeight,
+            ionUpdateHasX: this.ionUpdateHasX,
+            ionHasTabs: this.state.ionHasTabs,
+            ionHasTabsTop: this.state.ionHasTabsTop,
+            ionHasHeader: this.state.ionHasHeader,
+            ionHasSubheader: this.state.ionHasSubheader,
+            ionHasFooter: this.state.ionHasFooter,
+            ionHasSubfooter: this.state.ionHasSubfooter
            })}
         <IonModalContainer>{this.state.ionModal}</IonModalContainer>
         <IonBackdrop show={this.state.ionBackdrop} />
@@ -132,8 +150,6 @@ var IonBody = React.createClass({
 
 IonBody.contextTypes = {
   location: React.PropTypes.object
-}
+};
 
 export default IonBody;
-
-//         <a className="button" style={ {zIndex:100} } onClick={this.ionShowLoading.bind(null, false)}>Stop Loading</a>

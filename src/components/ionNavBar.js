@@ -14,7 +14,8 @@ var IonNavBar = React.createClass({
     leftButton: React.PropTypes.element,
     leftButtonColor: React.PropTypes.string,
     rightButton: React.PropTypes.element,
-    platform: React.PropTypes.object.isRequired
+    platform: React.PropTypes.object.isRequired,
+    ionUpdateHasX: React.PropTypes.func.isRequired
   },
   getDefaultProps: function() {
     // no need to set default platform; is propogated from IonBody
@@ -34,6 +35,12 @@ var IonNavBar = React.createClass({
     if (this.props.platform.isAndroid) {
       this.setState({'marginCompensation': Math.ceil(width) + 10 });
     }
+  },
+  componentWillMount: function() {
+    this.props.ionUpdateHasX('ionHasHeader', true);
+  },
+  componentWillUnmount: function() {
+    this.props.ionUpdateHasX('ionHasHeader', false);
   },
   render() {
     var platform = this.props.platform;
@@ -101,15 +108,3 @@ var IonNavBar = React.createClass({
 });
 
 export default IonNavBar;
-
-// improve this: make modular, test with different inputs @@@@@@@@@@@@@@@@
-
-
-// to make it dynamic: call method to set hasHeader to true
-// and on destroy again to false, see lifecycle events
-// @@@@@@@@@@@@@@@@
-
-// bundle props that are not used in a component, but need to passed on
-// see: https://facebook.github.io/react/docs/transferring-props.html
-// Also no need to mention them in propTypes and getDefaultProps if not used
-// @@@@@@@@@@@@@@@@
