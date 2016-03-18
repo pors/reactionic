@@ -17,6 +17,10 @@ import IonModal from './components/ionModal';
 import IonNavBackButton from './components/ionNavBackButton';
 import IonNavBar from './components/ionNavBar';
 import IonNavView from './components/ionNavView';
+import IonSideMenu from './components/ionSideMenu';
+import IonSideMenuContainer from './components/ionSideMenuContainer';
+import IonSideMenuContent from './components/ionSideMenuContent';
+import IonSideMenus from './components/ionSideMenus';
 import IonSlideBox from './components/ionSlideBox';
 import IonSpinner from './components/ionSpinner';
 import IonSubFooterBar from './components/ionSubFooterBar';
@@ -48,6 +52,10 @@ module.exports = {
   IonNavBackButton: IonNavBackButton,
   IonNavBar: IonNavBar,
   IonNavView: IonNavView,
+  IonSideMenu: IonSideMenu,
+  IonSideMenuContainer: IonSideMenuContainer,
+  IonSideMenuContent: IonSideMenuContent,
+  IonSideMenus: IonSideMenus,
   IonSlideBox: IonSlideBox,
   IonSpinner: IonSpinner,
   IonSubFooterBar: IonSubFooterBar,

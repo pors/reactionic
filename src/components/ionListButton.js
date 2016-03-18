@@ -5,7 +5,7 @@ var IonListButton = React.createClass({
   propTypes: {
     customClasses: React.PropTypes.string,
     action: React.PropTypes.string,
-    side: React.PropTypes.string,
+    side: React.PropTypes.string
   },
   getDefaultProps: function() {
     return {

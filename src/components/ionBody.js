@@ -32,8 +32,12 @@ var IonBody = React.createClass({
       ionHasHeader: false,
       ionHasSubheader: false,
       ionHasFooter: false,
-      ionHasSubfooter: false
+      ionHasSubfooter: false,
+      ionSnapper: null
     };
+  },
+  ionSetSnapper(snapper) {
+    this.setState({ ionSnapper: snapper });
   },
   ionSetTransitionDirection: function(direction) {
     // Used for setting the transition direction of the page change animations
@@ -135,7 +139,9 @@ var IonBody = React.createClass({
             ionHasHeader: this.state.ionHasHeader,
             ionHasSubheader: this.state.ionHasSubheader,
             ionHasFooter: this.state.ionHasFooter,
-            ionHasSubfooter: this.state.ionHasSubfooter
+            ionHasSubfooter: this.state.ionHasSubfooter,
+            ionSnapper: this.state.ionSnapper,
+            ionSetSnapper: this.ionSetSnapper
            })}
         <IonModalContainer>{this.state.ionModal}</IonModalContainer>
         <IonBackdrop show={this.state.ionBackdrop} />
