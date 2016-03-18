@@ -4,7 +4,7 @@ import classnames from 'classnames';
 var IonTabs = React.createClass({
   propTypes: {
     customClasses: React.PropTypes.string,
-    platform: React.PropTypes.object
+    tabsTop: React.PropTypes.bool
   },
   getDefaultProps: function() {
     return {
@@ -12,25 +12,23 @@ var IonTabs = React.createClass({
     };
   },
   componentWillMount: function() {
-    if (this.props.platform.isAndroid) {
+    if (this.props.tabsTop) {
       this.props.ionUpdateHasX('ionHasTabsTop', true);
     } else {
       this.props.ionUpdateHasX('ionHasTabs', true);
     }
   },
   componentWillUnmount: function() {
-    if (this.props.platform.isAndroid) {
+    if (this.props.tabsTop) {
       this.props.ionUpdateHasX('ionHasTabsTop', false);
     } else {
       this.props.ionUpdateHasX('ionHasTabs', false);
     }
   },
   render() {
-    var platform = this.props.platform;
-
     var classes = classnames(
-      this.props.customClasses,
-      {'tabs-top tabs-striped tabs-icon-left':  platform.isAndroid}
+      {'tabs-top' : this.props.tabsTop},
+      this.props.customClasses
     );
     return (
       <div className={ classes } >
