@@ -5,6 +5,7 @@ var IonSelect= React.createClass({
   propTypes: {
     customClasses: React.PropTypes.string,
     label: React.PropTypes.string,
+    handleChange: React.PropTypes.func,
     options:React.PropTypes.array,
     defaultValue: React.PropTypes.string
   },
@@ -18,10 +19,13 @@ var IonSelect= React.createClass({
       customClasses: '',
       label: '',
       options:[],
+      handleChange: () => {},
       value: ''
     };
   },
   handleChange(event){
+    if(this.props.handleChange)
+      this.props.handleChange(event.target.value)
     this.setState({
       value: event.target.value
     })
