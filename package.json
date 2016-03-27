@@ -1,6 +1,6 @@
 {
   "name": "reactionic",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "React Ionic Library. Use Ionic to build hybrid mobile apps with React. No Angular needed.",
   "main": "dist/index.js",
   "scripts": {
@@ -40,7 +40,8 @@
     "react-router": "^1.0.2",
     "react-slick": "^0.10.0",
     "react-static-container": "^1.0.0",
-    "snapjs": "^1.2.1"
+    "snapjs": "^1.2.1",
+    "transitionend-property": "0.0.2"
   },
   "devDependencies": {
     "babel-cli": "6.5.1",
