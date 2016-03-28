@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-var IonRange= React.createClass({
+var IonRange = React.createClass({
   propTypes: {
     customClasses: React.PropTypes.string,
     defaultValue: React.PropTypes.number,
@@ -11,6 +11,9 @@ var IonRange= React.createClass({
     min: React.PropTypes.number,
     max: React.PropTypes.number
   },
+  contextTypes: {
+   ionSnapper: React.PropTypes.object
+ },
 
   getInitialState(){
     return {
@@ -32,9 +35,16 @@ var IonRange= React.createClass({
   handleChange(event){
     if(this.props.handleChange)
       this.props.handleChange(event.target.value)
+
     this.setState({
       value: event.target.value
-    })
+    });
+  },
+  disableSnap(){
+    this.context.ionSnapper.disable();
+  },
+  enableSnap(){
+    this.context.ionSnapper.enable();
   },
   render() {
     var classes = classnames(
@@ -47,7 +57,11 @@ var IonRange= React.createClass({
           {this.props.iconBeforeInput}
           <input type='range' min={this.props.min} max={this.props.max}
                  value={this.state.value}
-                 onChange={this.handleChange}/>
+                 onChange={this.handleChange}
+                 onMouseEnter={this.disableSnap}
+                 onMouseLeave={this.enableSnap}
+                 onTouchStart={this.disableSnap}
+                 onTouchEnd={this.enableSnap}/>
           {this.props.iconAfterInput}
           {this.props.children}
       </div>
