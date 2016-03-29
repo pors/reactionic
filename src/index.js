@@ -17,7 +17,7 @@ import IonModal from './components/ionModal';
 import IonNavBackButton from './components/ionNavBackButton';
 import IonNavBar from './components/ionNavBar';
 import IonNavView from './components/ionNavView';
-import IonRange from './components/IonRange';
+import IonRange from './components/ionRange';
 import IonSelect from './components/ionSelect';
 import IonSideMenu from './components/ionSideMenu';
 import IonSideMenuContainer from './components/ionSideMenuContainer';
