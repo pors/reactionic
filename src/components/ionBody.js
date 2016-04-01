@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import {IonModalContainer} from './ionModal';
 import IonActionSheet from './ionActionSheet';
+import IonPopup from './ionPopup';
 import IonBackdrop from './ionBackdrop';
 import IonLoading from './ionLoading';
 import IonKeyboard from '../helpers/keyboard';
@@ -26,7 +27,8 @@ var IonBody = React.createClass({
     return {
       ionNavDirection: 'forward', // can be either forward or back, only used for IonNav* components
       ionModal: false, // can be either false or contain the modal node
-      ionActionSheet: {}, // contains the actionSheet data object
+      ionActionSheet: {},
+      ionPopup: {},
       ionBackdrop: false,
       ionLoading: false,
       ionKeyboardHeight: 0,
@@ -66,6 +68,9 @@ var IonBody = React.createClass({
   ionUpdateActionSheet(actionSheet) {
     this.setState({ ionActionSheet: actionSheet });
   },
+  ionUpdatePopup(popup) {
+    this.setState({ ionPopup: popup });
+  },
   ionShowBackdrop(show) {
     this.setState({ ionBackdrop: show });
   },
@@ -92,6 +97,7 @@ var IonBody = React.createClass({
       if (this.state.ionBackdrop) { this.ionShowBackdrop(false); }
       if (this.state.ionLoading) { this.ionShowLoading(false); }
       if (!_.isEmpty(this.state.ionActionSheet)) { this.ionUpdateActionSheet({}); }
+      if (!_.isEmpty(this.state.ionPopup)) { this.ionUpdatePopup({}); }
     }
   },
   handleKeyboard: function(e) {
@@ -127,6 +133,7 @@ var IonBody = React.createClass({
       'platform-android': platform.isAndroid,
       'modal-open': this.state.ionModal,
       'action-sheet-open': !_.isEmpty(this.state.ionActionSheet),
+      'popup-open': !_.isEmpty(this.state.ionPopup),
       'keyboard-open': this.state.ionKeyboardHeight
     });    
     return (
@@ -139,6 +146,7 @@ var IonBody = React.createClass({
             ionModal: this.state.ionModal,
             ionShowModal: this.ionShowModal,
             ionUpdateActionSheet: this.ionUpdateActionSheet,
+            ionUpdatePopup: this.ionUpdatePopup,
             ionShowBackdrop: this.ionShowBackdrop,
             ionShowLoading: this.ionShowLoading,
             ionKeyboardHeight: this.state.ionKeyboardHeight,
@@ -161,7 +169,10 @@ var IonBody = React.createClass({
         <IonActionSheet
           ionActionSheet={this.state.ionActionSheet}
           ionUpdateActionSheet={this.ionUpdateActionSheet} />
-      </div>
+        <IonPopup
+          ionPopup={this.state.ionPopup}
+          ionUpdatePopup={this.ionUpdatePopup} />
+        </div>
     );
   }
 });
