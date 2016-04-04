@@ -11,50 +11,46 @@ var IonPopup = React.createClass({
   getInitialState: function() {
     return {
       isUp: false,
-      callback: () => {}
+      closing: false,
+      callback: () => {},
+      inputValue: '' // needed for prompt
     };
   },
-  cancelAction: function(e) {
-    e && e.stopPropagation();
-    this.close(this.props.ionPopup.cancel);
-  },
   buttonClicked: function(e, callback) {
-    e && e.stopPropagation();
+    e && e.stopPropagation();    
     this.close(callback);
   },
   close: function(callback) {
     if (this.state.isUp) {
-      this.setState({ isUp: false, callback: callback });
+      this.setState({ closing: true, callback: callback });
     }
   },
   mixins: [SetTimeoutMixin],
-  componentDidUpdate: function(prevProps, prevState) {
+  componentDidUpdate: function(prevProps, prevState) {    
     if (_.isEmpty(prevProps.ionPopup) && !_.isEmpty(this.props.ionPopup)) {
       // show popup
       this.setState({ isUp: true });
     }
-    if (!this.state.isUp && prevState.isUp) {
-      // close popup and call callback
+    if (this.state.isUp && !prevState.closing && this.state.closing) {
       var self = this;
-      this.setTimeout(function() {
+      var handler =  function() {
+        self.setState({ isUp: false });
+        self.setState({ closing: false });
         self.props.ionUpdatePopup({});
         if (typeof self.state.callback === 'function') {
           self.state.callback();
-        };
-      }, 1000@@@@@@@@@@@@@@@@);
+        }
+      };
+      this.setTimeout(handler, 100);
     }
   },
-  componentWillUpdate: function(nextProps, nextState) {
-    if (_.isEmpty(nextProps.ionPopup) && !_.isEmpty(this.props.ionPopup)) {
-      // hide popup
-      this.cancelAction(false);
-    }    
+  handleFormChange(e) { // needed for prompt
+    this.setState({ inputValue: e.target.value });
   },
+
   render() {
     var ionPopup = this.props.ionPopup;
 
-    console.log(ionPopup);
-    
     var willMount = true;
     if (_.isEmpty(ionPopup)) willMount = false;
 
@@ -63,9 +59,74 @@ var IonPopup = React.createClass({
     var template = ionPopup.template;
     var buttons = ionPopup.buttons;
     var cancel = ionPopup.cancel;
+    var popupType = ionPopup.popupType;
     var ionUpdatePopup = this.props.ionUpdatePopup;
     var onclickCancel = (e) => { this.cancelAction(e); };
 
+    switch(popupType) {
+    case 'alert':
+      buttons = [
+        {
+          text: ionPopup.okText ? ionPopup.okText : 'Ok',
+          type: ionPopup.okType ? ionPopup.okType : 'button-positive',
+          onTap: function(event) {
+            if (ionPopup.onOk) ionPopup.onOk(event);
+            return true;
+          }
+        }
+      ];
+      break;
+    case 'confirm':
+      buttons = [
+        {
+          text: ionPopup.cancelText ? ionPopup.cancelText : 'Cancel',
+          type: ionPopup.cancelType ? ionPopup.cancelType : 'button-default',
+          onTap: function (event) {
+            if (ionPopup.onCancel) ionPopup.onCancel(event);
+            return true;
+          }
+        },
+        {
+          text: ionPopup.okText ? ionPopup.okText : 'Ok',
+          type: ionPopup.okType ? ionPopup.okType : 'button-positive',
+          onTap: function (event) {
+            if (ionPopup.onOk) ionPopup.onOk(event);
+            return true;
+          }
+        }
+      ];
+      break;
+    case 'prompt':
+      template =  <span className="popup-prompt-text">{template}</span>;
+
+      ionPopup.inputType = ionPopup.inputType || 'text';
+      ionPopup.inputPlaceholder = ionPopup.inputPlaceholder || '';
+      template = <span>{template}<input type={ionPopup.inputType} placeholder={ionPopup.inputPlaceholder} value={this.state.inputValue} onChange={this.handleFormChange} /></span>;
+      var self = this;
+      buttons = [
+        {
+          text: ionPopup.cancelText ? ionPopup.cancelText : 'Cancel',
+          type: ionPopup.cancelType ? ionPopup.cancelType : 'button-default',
+          onTap: function (event) {
+            if (ionPopup.onCancel) ionPopup.onCancel(event);
+            return true;
+          }
+        },
+        {
+          text: ionPopup.okText ? ionPopup.okText : 'Ok',
+          type: ionPopup.okType ? ionPopup.okType : 'button-positive',
+          onTap: function(event) {
+            if (ionPopup.onOk) ionPopup.onOk(event, self.state.inputValue);
+            return true;
+          }
+        }
+      ];
+
+      break;
+    default:
+      // we assume the type is 'show', no need to do anything
+    }
+    
     var head = null;
     if (title || subTitle) {
       head = (
@@ -96,7 +157,7 @@ var IonPopup = React.createClass({
       {'backdrop': willMount, 'visible active': this.state.isUp}
     );
     var classes = classnames(
-      {'popup-container': true, 'popup-showing active': this.state.isUp}
+      {'popup-container': willMount, 'popup-showing': this.state.isUp, 'active': this.state.isUp && !this.state.closing, 'popup-hidden': this.state.closing}
     );
 
     return (
