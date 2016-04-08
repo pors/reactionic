@@ -67,10 +67,7 @@ var IonBody = React.createClass({
       ionModal: modal
     });
   },
-  ionShowPopover(popover) {
-
-    console.log('popover', popover);
-    
+  ionShowPopover(popover) {    
     this.setState({ ionPopover: popover });
   },
   ionUpdateActionSheet(actionSheet) {

@@ -47,9 +47,6 @@ var IonPopover = React.createClass({
       var popoverWidth = popover.offsetWidth;
       var popoverHeight = popover.offsetHeight;
 
-
-      console.log(bodyHeight, bodyWidth, buttonPosition, $(button).offset(), buttonWidth, buttonHeight, popoverWidth, popoverHeight);
-
       var popoverCSS = {
         marginLeft: '0',
         opacity: 1,
@@ -97,10 +94,7 @@ var IonPopover = React.createClass({
         </div>
         </div>
       );
-    }
-
-    console.log('content', content);
-    
+    }    
     return (
       <div>
       {content}
