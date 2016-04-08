@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import {IonModalContainer} from './ionModal';
 import IonActionSheet from './ionActionSheet';
+import IonPopover from './ionPopover';
 import IonPopup from './ionPopup';
 import IonBackdrop from './ionBackdrop';
 import IonLoading from './ionLoading';
@@ -27,6 +28,7 @@ var IonBody = React.createClass({
     return {
       ionNavDirection: 'forward', // can be either forward or back, only used for IonNav* components
       ionModal: false, // can be either false or contain the modal node
+      ionPopover: false, // can be either false or contain the popover
       ionActionSheet: {},
       ionPopup: {},
       ionBackdrop: false,
@@ -65,6 +67,12 @@ var IonBody = React.createClass({
       ionModal: modal
     });
   },
+  ionShowPopover(popover) {
+
+    console.log('popover', popover);
+    
+    this.setState({ ionPopover: popover });
+  },
   ionUpdateActionSheet(actionSheet) {
     this.setState({ ionActionSheet: actionSheet });
   },
@@ -94,6 +102,7 @@ var IonBody = React.createClass({
     // close modal etc. when navigating away from page (e.g. with browser back button)
     if (nextContext.location.pathname !== this.context.location.pathname) {
       if (this.state.ionModal) { this.ionShowModal(false); }
+      if (this.state.ionPopover) { this.ionShowPopover(false); }
       if (this.state.ionBackdrop) { this.ionShowBackdrop(false); }
       if (this.state.ionLoading) { this.ionShowLoading(false); }
       if (!_.isEmpty(this.state.ionActionSheet)) { this.ionUpdateActionSheet({}); }
@@ -158,7 +167,9 @@ var IonBody = React.createClass({
             ionHasFooter: this.state.ionHasFooter,
             ionHasSubfooter: this.state.ionHasSubfooter,
             ionSnapper: this.state.ionSnapper,
-            ionSetSnapper: this.ionSetSnapper
+            ionSetSnapper: this.ionSetSnapper,
+            ionPopover: this.state.ionPopover,
+            ionShowPopover: this.ionShowPopover
            })}
         <IonModalContainer>{this.state.ionModal}</IonModalContainer>
         <IonBackdrop show={this.state.ionBackdrop} />
@@ -172,6 +183,7 @@ var IonBody = React.createClass({
         <IonPopup
           ionPopup={this.state.ionPopup}
           ionUpdatePopup={this.ionUpdatePopup} />
+        <IonPopover ionShowPopover={this.ionShowPopover}>{this.state.ionPopover}</IonPopover>
         </div>
     );
   }
