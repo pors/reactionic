@@ -1,5 +1,7 @@
 # React-Ionic
 
+[![Join the chat at https://gitter.im/pors/reactionic](https://badges.gitter.im/pors/reactionic.svg)](https://gitter.im/pors/reactionic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## React and Ionic: a Perfect Match
 
 [React](https://facebook.github.io/react/) and [Ionic](http://ionicframework.com/) are a great combination:
