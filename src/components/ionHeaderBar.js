@@ -11,9 +11,7 @@ var IonHeaderBar = React.createClass({
       React.PropTypes.element
     ]),
     leftButton: React.PropTypes.element,
-    rightButton: React.PropTypes.element,
-    platform: React.PropTypes.object.isRequired,
-    ionUpdateHasX: React.PropTypes.func.isRequired
+    rightButton: React.PropTypes.element
   },
   getDefaultProps: function() {
     // no need to set default platform; is propogated from IonBody
@@ -29,19 +27,23 @@ var IonHeaderBar = React.createClass({
       marginCompensation: 0
     };
   },
+  contextTypes: {
+    ionUpdateHasX: React.PropTypes.func,
+    ionPlatform: React.PropTypes.object
+  },
   setMarginCompensation: function(width) {
-    if (this.props.platform.isAndroid) {
+    if (this.context.ionPlatform.isAndroid) {
       this.setState({'marginCompensation': Math.ceil(width) + 10 });
     }
   },
   componentWillMount: function() {
-    this.props.ionUpdateHasX('ionHasHeader', true);
+    this.context.ionUpdateHasX('ionHasHeader', true);
   },
   componentWillUnmount: function() {
-    this.props.ionUpdateHasX('ionHasHeader', false);
+    this.context.ionUpdateHasX('ionHasHeader', false);
   },
   render() {
-    var platform = this.props.platform;
+    var platform = this.context.ionPlatform;
     var leftButton = this.props.leftButton;
     if (leftButton && platform.isAndroid) {
       // Add a reference to leftButton so we can find it when componentDidMount

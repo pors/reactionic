@@ -16,7 +16,7 @@ var IonButton = React.createClass({
     iconPosition: React.PropTypes.oneOf(['left', 'right']),
     color: React.PropTypes.string,
     onClick: React.PropTypes.func,
-    ionSetTransitionDirection: React.PropTypes.func
+    backButton: React.PropTypes.bool
   },
   getDefaultProps: function() {
     return {
@@ -29,13 +29,16 @@ var IonButton = React.createClass({
       iconPosition: null,
       color: '',
       onClick: null,
-      ionSetTransitionDirection: null
+      backButton: false
     };
   },
+  contextTypes: {
+    ionSetTransitionDirection: React.PropTypes.func
+  },
   onClick: function(e) {
-    if (this.props.ionSetTransitionDirection) {
+    if (this.props.backButton) {
       // set the transitionDirection for backward animation
-      this.props.ionSetTransitionDirection('back');
+      this.context.ionSetTransitionDirection('back');
 
       // execute possible other onclick function
       if (this.props.onClick) {

@@ -3,18 +3,19 @@ import classnames from 'classnames';
 
 var IonView = React.createClass({
   propTypes: {
-    customClasses: React.PropTypes.string,
-    ionSetTransitionDirection: React.PropTypes.func
+    customClasses: React.PropTypes.string
   },
   getDefaultProps: function() {
     return {
-      customClasses: '',
-      ionSetTransitionDirection: null
+      customClasses: ''
     };
   },
+  contextTypes: {
+    ionSetTransitionDirection: React.PropTypes.func
+  },
   componentWillUnmount: function() {
-    if (this.props.ionSetTransitionDirection) {
-      this.props.ionSetTransitionDirection('forward');
+    if (this.context.ionSetTransitionDirection) {
+      this.context.ionSetTransitionDirection('forward');
     }
   },
   render() {
@@ -25,7 +26,7 @@ var IonView = React.createClass({
     );
     return (
       <div className={ classes } >
-        {React.cloneElement(this.props.children, {ionSetTransitionDirection: this.props.ionSetTransitionDirection})}
+        { this.props.children }
       </div>
     );
   }

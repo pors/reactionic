@@ -21,7 +21,7 @@ var IonItemToggle = React.createClass({
   getInitialState: function () {
     return {
       checked: this.props.checked
-    }
+    };
   },  
   handleChange: function (event) {
     var toggle = this.state.checked ? false : true;

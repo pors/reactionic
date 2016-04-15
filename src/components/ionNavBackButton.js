@@ -4,8 +4,7 @@ import IonButton from './ionButton';
 
 var IonNavBackButton = React.createClass({
   propTypes: {
-    customClasses: React.PropTypes.string,
-    ionSetTransitionDirection: React.PropTypes.func.isRequired
+    customClasses: React.PropTypes.string
   },
   getDefaultProps: function() {
     return {
@@ -18,7 +17,7 @@ var IonNavBackButton = React.createClass({
       "buttons back-button pull-left"
     );
     return (
-      <IonButton {...this.props} {...this.state} customClasses={classes}>
+      <IonButton {...this.props} {...this.state} customClasses={classes} backButton={true}>
         { this.props.children }
       </IonButton>
     );

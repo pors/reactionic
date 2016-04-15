@@ -13,9 +13,7 @@ var IonNavBar = React.createClass({
     ]),
     leftButton: React.PropTypes.element,
     leftButtonColor: React.PropTypes.string,
-    rightButton: React.PropTypes.element,
-    platform: React.PropTypes.object.isRequired,
-    ionUpdateHasX: React.PropTypes.func.isRequired
+    rightButton: React.PropTypes.element
   },
   getDefaultProps: function() {
     // no need to set default platform; is propogated from IonBody
@@ -31,19 +29,25 @@ var IonNavBar = React.createClass({
       marginCompensation: 0
     };
   },
+  contextTypes: {
+    ionPlatform: React.PropTypes.object,
+    ionUpdateHasX: React.PropTypes.func,
+    ionSetTransitionDirection: React.PropTypes.func,
+    ionNavDirection: React.PropTypes.string
+  },
   setMarginCompensation: function(width) {
-    if (this.props.platform.isAndroid) {
+    if (this.context.ionPlatform.isAndroid) {
       this.setState({'marginCompensation': Math.ceil(width) + 10 });
     }
   },
   componentWillMount: function() {
-    this.props.ionUpdateHasX('ionHasHeader', true);
+    this.context.ionUpdateHasX('ionHasHeader', true);
   },
   componentWillUnmount: function() {
-    this.props.ionUpdateHasX('ionHasHeader', false);
+    this.context.ionUpdateHasX('ionHasHeader', false);
   },
   render() {
-    var platform = this.props.platform;
+    var platform = this.context.ionPlatform;
     var leftButton = this.props.leftButton;
     var classes = classnames(
       {'bar': true, 'bar-header': true},
@@ -52,7 +56,7 @@ var IonNavBar = React.createClass({
       {'nav-bar-transition-android': platform.isAndroid,
        'nav-bar-transition-ios': !platform.isAndroid
       },
-      'nav-bar-direction-' + this.props.ionNavDirection
+      'nav-bar-direction-' + this.context.ionNavDirection
     );
     return (
       <div className={classes}>

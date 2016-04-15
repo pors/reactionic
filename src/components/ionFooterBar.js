@@ -4,9 +4,7 @@ import { Lifecycle } from 'react-router';
 
 var IonFooterBar = React.createClass({
   propTypes: {
-    customClasses: React.PropTypes.string,
-    ionUpdateHasX: React.PropTypes.func.isRequired,
-    ionHasTabs: React.PropTypes.bool
+    customClasses: React.PropTypes.string
   },
   getDefaultProps: function() {
     return {
@@ -14,18 +12,22 @@ var IonFooterBar = React.createClass({
       ionHasTabs: false
     };
   },
+  contextTypes: {
+    ionUpdateHasX: React.PropTypes.func.isRequired,
+    ionHasTabs: React.PropTypes.bool
+  },
   componentWillMount: function() {
-    this.props.ionUpdateHasX('ionHasFooter', true);
+    this.context.ionUpdateHasX('ionHasFooter', true);
   },
   mixins: [ Lifecycle ],
   routerWillLeave(nextLocation) {
-    this.props.ionUpdateHasX('ionHasFooter', false);
+    this.context.ionUpdateHasX('ionHasFooter', false);
   },
   render() {
     var classes = classnames(
       {'bar': true, 'bar-footer': true},
       this.props.customClasses || 'bar-stable', // default class
-      {'has-tabs': this.props.ionHasTabs}
+      {'has-tabs': this.context.ionHasTabs}
     );
     return (
       <div className={ classes } >

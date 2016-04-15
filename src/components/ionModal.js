@@ -36,9 +36,7 @@ var IonModal = React.createClass({
     title: React.PropTypes.string,    
     closeText: React.PropTypes.string,
     focusFirstInput: React.PropTypes.bool,
-    ionShowModal: React.PropTypes.func,
-    barClasses: React.PropTypes.string,
-    ionKeyboardHeight: React.PropTypes.number
+    barClasses: React.PropTypes.string
   },
   getDefaultProps: function() {
     return {
@@ -47,15 +45,19 @@ var IonModal = React.createClass({
       title: '',
       closeText: '',
       focusFirstInput: true,
-      barClasses: 'bar-stable',
-      ionKeyboardHeight: 0
+      barClasses: 'bar-stable'
     };
+  },
+  contextTypes: {
+    ionShowModal: React.PropTypes.func,
+    ionKeyboardHeight: React.PropTypes.number,
+    ionPlatform: React.PropTypes.object
   },
   backdropClicked: function(e) {
     e.preventDefault();
     if (e.target.className.indexOf("modal-backdrop") >= 0) {
       // if clicked on backdrop outside of the modal, close modal
-      this.props.ionShowModal(false);
+      this.context.ionShowModal(false);
     }    
   },
   componentDidMount() {
@@ -79,13 +81,13 @@ var IonModal = React.createClass({
     );
     var titleClasses = classnames(
       {'title': true,
-       'title-left': this.props.platform.isAndroid}
+       'title-left': this.context.ionPlatform.isAndroid}
     );
     var closeButton;
     if (this.props.closeText) {
-      closeButton = <button onClick={ () => this.props.ionShowModal(false) } className="button button-positive button-clear">{this.props.closeText}</button>;
+      closeButton = <button onClick={ () => this.context.ionShowModal(false) } className="button button-positive button-clear">{this.props.closeText}</button>;
     } else {
-      closeButton = <button onClick={ () => this.props.ionShowModal(false) } className="button button-icon"><i className="icon ion-ios-close-empty"></i></button>;
+      closeButton = <button onClick={ () => this.context.ionShowModal(false) } className="button button-icon"><i className="icon ion-ios-close-empty"></i></button>;
     }
     var contents;
     if (this.props.customTemplate) {

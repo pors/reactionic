@@ -11,18 +11,21 @@ var IonTabs = React.createClass({
       customClasses: ''
     };
   },
+  contextTypes: {
+    ionUpdateHasX: React.PropTypes.func
+  },
   componentWillMount: function() {
     if (this.props.tabsTop) {
-      this.props.ionUpdateHasX('ionHasTabsTop', true);
+      this.context.ionUpdateHasX('ionHasTabsTop', true);
     } else {
-      this.props.ionUpdateHasX('ionHasTabs', true);
+      this.context.ionUpdateHasX('ionHasTabs', true);
     }
   },
   componentWillUnmount: function() {
     if (this.props.tabsTop) {
-      this.props.ionUpdateHasX('ionHasTabsTop', false);
+      this.context.ionUpdateHasX('ionHasTabsTop', false);
     } else {
-      this.props.ionUpdateHasX('ionHasTabs', false);
+      this.context.ionUpdateHasX('ionHasTabs', false);
     }
   },
   render() {

@@ -21,6 +21,10 @@ var IonLoading = React.createClass({
       wait: false // used for user-option 'delay'
     };
   },
+  contextTypes: {
+    ionShowBackdrop: React.PropTypes.func,
+    ionShowLoading: React.PropTypes.func
+  },
   getOptions: function(props) {
     if (props.show === false) { return false; }
     // merge default options with user options
@@ -36,7 +40,7 @@ var IonLoading = React.createClass({
   componentWillReceiveProps: function(nextProps) {
     if (this.props.show !== false && nextProps.show === false) {
       // we will shop loading, so hide a potential backdrop
-      this.props.ionShowBackdrop(false);
+      this.context.ionShowBackdrop(false);
       // also clear possible timeouts
       this.clearTimeouts();
     } else if (this.props.show === false && nextProps.show !== false) {
@@ -44,7 +48,7 @@ var IonLoading = React.createClass({
       var nextOptions = this.getOptions(nextProps);
       if(nextOptions.duration > 0 && nextOptions.duration < nextOptions.delay) {
         console.warn("IonLoading: duration should be longer than delay");
-        this.props.ionShowLoading(false);
+        this.context.ionShowLoading(false);
         return;
       }
       if(nextOptions.delay > 0) {
@@ -52,10 +56,10 @@ var IonLoading = React.createClass({
         this.setTimeout(() => this.setState({wait:false}), nextOptions.delay);
       }
       if(nextOptions.backdrop) {
-        this.setTimeout(() => this.props.ionShowBackdrop(true), nextOptions.delay);
+        this.setTimeout(() => this.context.ionShowBackdrop(true), nextOptions.delay);
       }
       if(nextOptions.duration > 0) {
-        this.setTimeout(() => this.props.ionShowLoading(false), nextOptions.duration);
+        this.setTimeout(() => this.context.ionShowLoading(false), nextOptions.duration);
       }
     }        
   },  
