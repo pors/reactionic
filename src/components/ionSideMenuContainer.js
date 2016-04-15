@@ -2,6 +2,9 @@ import React from 'react';
 import Snap from 'snapjs';
 
 var IonSideMenuContainer = React.createClass({
+  contextTypes: {
+    ionSetSnapper: React.PropTypes.func
+  },
   componentDidMount: function() {
     var sideMenuContent = document.getElementById('IonSideMenuContent');
     let snapper = new Snap({
@@ -16,12 +19,12 @@ var IonSideMenuContainer = React.createClass({
         } else {
           this.open(direction);
         }
-      }
+      };
     }
-    this.props.ionSetSnapper(snapper);
+    this.context.ionSetSnapper(snapper);
   },
   componentWillUnmount: function() {
-    this.props.ionSetSnapper(null);
+    this.context.ionSetSnapper(null);
   },
   render() {
     return (

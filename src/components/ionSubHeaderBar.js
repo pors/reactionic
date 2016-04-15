@@ -4,28 +4,29 @@ import { Lifecycle } from 'react-router';
 
 var IonSubHeaderBar = React.createClass({
   propTypes: {
-    customClasses: React.PropTypes.string,
-    ionUpdateHasX: React.PropTypes.func.isRequired,
-    ionHasTabsTop: React.PropTypes.bool
+    customClasses: React.PropTypes.string
   },
   getDefaultProps: function() {
     return {
-      customClasses: '',
-      ionHasTabsTop: false
+      customClasses: ''
     };
   },
+  contextTypes: {
+    ionUpdateHasX: React.PropTypes.func,
+    ionHasTabsTop: React.PropTypes.bool
+  },
   componentWillMount: function() {
-    this.props.ionUpdateHasX('ionHasSubheader', true);
+    this.context.ionUpdateHasX('ionHasSubheader', true);
   },
   mixins: [ Lifecycle ],
   routerWillLeave(nextLocation) {
-    this.props.ionUpdateHasX('ionHasSubheader', false);
+    this.context.ionUpdateHasX('ionHasSubheader', false);
   },
   render() {
     var classes = classnames(
       {'bar': true, 'bar-subheader': true},
       this.props.customClasses || 'bar-stable', // default class
-      {'has-tabs-top': this.props.ionHasTabsTop}
+      {'has-tabs-top': this.context.ionHasTabsTop}
     );
     return (
       <div className={ classes } >

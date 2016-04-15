@@ -4,9 +4,9 @@ import _ from 'lodash';
 import transitionend from 'transitionend-property';
 
 var IonActionSheet = React.createClass({
-  propTypes: {
-    ionActionSheet: React.PropTypes.object.isRequired,
-    ionUpdateActionSheet: React.PropTypes.func.isRequired
+  contextTypes: {
+    ionActionSheet: React.PropTypes.object,
+    ionUpdateActionSheet: React.PropTypes.func
   },
   getInitialState: function() {
     return {
@@ -16,15 +16,15 @@ var IonActionSheet = React.createClass({
   },
   cancelAction: function(e) {
     e && e.stopPropagation();
-    this.close(this.props.ionActionSheet.cancel);
+    this.close(this.context.ionActionSheet.cancel);
   },
   destructiveButtonClicked: function(e) {
     e && e.stopPropagation();
-    this.close(this.props.ionActionSheet.destructiveButtonClicked);
+    this.close(this.context.ionActionSheet.destructiveButtonClicked);
   },
   buttonClicked: function(e, idx) {
     e && e.stopPropagation();
-    this.close(this.props.ionActionSheet.buttonClicked.bind(null, idx));
+    this.close(this.context.ionActionSheet.buttonClicked.bind(null, idx));
   },
   close: function(callback) {
     if (this.state.isUp) {
@@ -32,14 +32,14 @@ var IonActionSheet = React.createClass({
     }
   },
   componentDidUpdate: function(prevProps, prevState) {
-    if (_.isEmpty(prevProps.ionActionSheet) && !_.isEmpty(this.props.ionActionSheet)) {
+    if (_.isEmpty(prevProps.ionActionSheet) && !_.isEmpty(this.context.ionActionSheet)) {
       // show actionSheet
       this.setState({ isUp: true });
     }
     if (!this.state.isUp && prevState.isUp) {
       var self = this;
       var handler =  function() {
-        self.props.ionUpdateActionSheet({});
+        self.context.ionUpdateActionSheet({});
         wrapper.removeEventListener(transitionend, handler);
         if (typeof self.state.callback === 'function') {
           self.state.callback();
@@ -50,13 +50,13 @@ var IonActionSheet = React.createClass({
     }
   },
   componentWillUpdate: function(nextProps, nextState) {
-    if (_.isEmpty(nextProps.ionActionSheet) && !_.isEmpty(this.props.ionActionSheet)) {
+    if (_.isEmpty(nextProps.ionActionSheet) && !_.isEmpty(this.context.ionActionSheet)) {
       // hide actionSheet
       this.cancelAction(false);
     }    
   },
   render() {
-    var ionActionSheet = this.props.ionActionSheet;
+    var ionActionSheet = this.context.ionActionSheet;
 
     var willMount = true;
     if (_.isEmpty(ionActionSheet)) willMount = false;
@@ -68,7 +68,7 @@ var IonActionSheet = React.createClass({
     var cancel = ionActionSheet.cancel;
     var buttonClicked = ionActionSheet.buttonClicked;
     var destructiveButtonClicked = ionActionSheet.destructiveButtonClicked;
-    var ionUpdateActionSheet = this.props.ionUpdateActionSheet;
+    var ionUpdateActionSheet = this.context.ionUpdateActionSheet;
     var onclickCancel = (e) => { this.cancelAction(e); };
     var onclickDelete = (e) => { this.destructiveButtonClicked(e); };
 

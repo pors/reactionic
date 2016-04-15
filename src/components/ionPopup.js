@@ -5,8 +5,6 @@ import SetTimeoutMixin from '../helpers/timeout';
 
 var IonPopup = React.createClass({
   propTypes: {
-    ionPopup: React.PropTypes.object.isRequired,
-    ionUpdatePopup: React.PropTypes.func.isRequired
   },
   getInitialState: function() {
     return {
@@ -15,6 +13,10 @@ var IonPopup = React.createClass({
       callback: () => {},
       inputValue: '' // needed for prompt
     };
+  },
+  contextTypes: {
+    ionPopup: React.PropTypes.object,
+    ionUpdatePopup: React.PropTypes.func
   },
   buttonClicked: function(e, callback) {
     e && e.stopPropagation();    
@@ -26,8 +28,8 @@ var IonPopup = React.createClass({
     }
   },
   mixins: [SetTimeoutMixin],
-  componentDidUpdate: function(prevProps, prevState) {    
-    if (_.isEmpty(prevProps.ionPopup) && !_.isEmpty(this.props.ionPopup)) {
+  componentDidUpdate: function(prevProps, prevState, prevContext) {    
+    if (_.isEmpty(prevContext.ionPopup) && !_.isEmpty(this.context.ionPopup)) {
       // show popup
       this.setState({ isUp: true });
     }
@@ -36,7 +38,7 @@ var IonPopup = React.createClass({
       var handler =  function() {
         self.setState({ isUp: false });
         self.setState({ closing: false });
-        self.props.ionUpdatePopup({});
+        self.context.ionUpdatePopup({});
         if (typeof self.state.callback === 'function') {
           self.state.callback();
         }
@@ -49,7 +51,7 @@ var IonPopup = React.createClass({
   },
 
   render() {
-    var ionPopup = this.props.ionPopup;
+    var ionPopup = this.context.ionPopup;
 
     var willMount = true;
     if (_.isEmpty(ionPopup)) willMount = false;
@@ -60,7 +62,7 @@ var IonPopup = React.createClass({
     var buttons = ionPopup.buttons;
     var cancel = ionPopup.cancel;
     var popupType = ionPopup.popupType;
-    var ionUpdatePopup = this.props.ionUpdatePopup;
+    var ionUpdatePopup = this.context.ionUpdatePopup;
     var onclickCancel = (e) => { this.cancelAction(e); };
 
     switch(popupType) {

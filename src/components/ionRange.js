@@ -12,15 +12,13 @@ var IonRange = React.createClass({
     max: React.PropTypes.number
   },
   contextTypes: {
-   ionSnapper: React.PropTypes.object
- },
-
+    ionSnapper: React.PropTypes.object
+  },
   getInitialState(){
     return {
       value: this.props.defaultValue > this.props.max ? this.props.max : this.props.defaultValue
     };
-  },
-
+  },  
   getDefaultProps: function() {
     return {
       customClasses: '',
@@ -29,12 +27,12 @@ var IonRange = React.createClass({
       iconBeforeInput:null,
       iconAfterInput: null,
       min: 0,
-      max: 100,
+      max: 100
     };
   },
   handleChange(event){
     if(this.props.handleChange)
-      this.props.handleChange(event.target.value)
+      this.props.handleChange(event.target.value);
 
     this.setState({
       value: event.target.value

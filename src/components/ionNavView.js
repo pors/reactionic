@@ -4,8 +4,7 @@ import RouteCSSTransitionGroup from '../helpers/animate';
 
 var IonNavView = React.createClass({
   propTypes: {
-    customClasses: React.PropTypes.string,
-    platform: React.PropTypes.object
+    customClasses: React.PropTypes.string
   },
   getDefaultProps: function() {
     // no need to set default platform and ionSetTransitionDirection as it is propogated from IonBody
@@ -13,13 +12,18 @@ var IonNavView = React.createClass({
       customClasses: ''
     };
   },
+  contextTypes: {
+    ionPlatform: React.PropTypes.object,
+    ionNavDirection: React.PropTypes.string,
+    ionSetTransitionDirection: React.PropTypes.func
+  },
   render() {
-    var platform = this.props.platform;
+    var platform = this.context.ionPlatform;
     var classes = classnames(
       {'nav-view-transition-android': platform.isAndroid,
        'nav-view-transition-ios': !platform.isAndroid
       },
-      'nav-view-direction-' + this.props.ionNavDirection,
+      'nav-view-direction-' + this.context.ionNavDirection,
       this.props.customClasses
     );
     return (
@@ -35,7 +39,7 @@ var IonNavView = React.createClass({
                        } }
       className={classes}
       >
-        {React.cloneElement(this.props.children, {ionSetTransitionDirection: this.props.ionSetTransitionDirection})}
+        { this.props.children }
       </RouteCSSTransitionGroup>
     );
   }

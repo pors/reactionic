@@ -40,7 +40,62 @@ var IonBody = React.createClass({
       ionHasSubheader: false,
       ionHasFooter: false,
       ionHasSubfooter: false,
-      ionSnapper: null
+      ionSnapper: null,
+      ionKeyboard: {}
+    };
+  },
+  childContextTypes: {
+    ionPlatform: React.PropTypes.object,
+    ionKeyboard: React.PropTypes.object,
+    ionSetTransitionDirection: React.PropTypes.func,
+    ionNavDirection: React.PropTypes.string,
+    ionModal: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.bool]),
+    ionShowModal: React.PropTypes.func,   
+    ionUpdateActionSheet: React.PropTypes.func,
+    ionUpdatePopup: React.PropTypes.func,
+    ionShowBackdrop: React.PropTypes.func,
+    ionShowLoading: React.PropTypes.func,
+    ionKeyboardHeight: React.PropTypes.number,
+    ionUpdateHasX: React.PropTypes.func,
+    ionHasTabs: React.PropTypes.bool,
+    ionHasTabsTop: React.PropTypes.bool,
+    ionHasHeader: React.PropTypes.bool,
+    ionHasSubheader: React.PropTypes.bool,
+    ionHasFooter: React.PropTypes.bool,
+    ionHasSubfooter: React.PropTypes.bool,
+    ionSnapper: React.PropTypes.object,
+    ionSetSnapper: React.PropTypes.func,
+    ionPopover: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.bool]),
+    ionShowPopover: React.PropTypes.func,
+    ionActionSheet: React.PropTypes.object,
+    ionPopup: React.PropTypes.object
+  },
+  getChildContext: function() {
+    return {
+      ionPlatform: this.props.platform,
+      ionKeyboard: this.state.ionKeyboard,
+      ionSetTransitionDirection: this.ionSetTransitionDirection,
+      ionNavDirection: this.state.ionNavDirection,
+      ionModal: this.state.ionModal,
+      ionShowModal: this.ionShowModal,
+      ionUpdateActionSheet: this.ionUpdateActionSheet,
+      ionUpdatePopup: this.ionUpdatePopup,
+      ionShowBackdrop: this.ionShowBackdrop,
+      ionShowLoading: this.ionShowLoading,
+      ionKeyboardHeight: this.state.ionKeyboardHeight,
+      ionUpdateHasX: this.ionUpdateHasX,
+      ionHasTabs: this.state.ionHasTabs,
+      ionHasTabsTop: this.state.ionHasTabsTop,
+      ionHasHeader: this.state.ionHasHeader,
+      ionHasSubheader: this.state.ionHasSubheader,
+      ionHasFooter: this.state.ionHasFooter,
+      ionHasSubfooter: this.state.ionHasSubfooter,
+      ionSnapper: this.state.ionSnapper,
+      ionSetSnapper: this.ionSetSnapper,
+      ionPopover: this.state.ionPopover,
+      ionShowPopover: this.ionShowPopover,
+      ionActionSheet: this.state.ionActionSheet,
+      ionPopup: this.state.ionPopup
     };
   },
   ionSetSnapper(snapper) {
@@ -55,17 +110,7 @@ var IonBody = React.createClass({
     }
   },
   ionShowModal(modal) {
-    if (modal && React.isValidElement(modal)) {
-      // add the ionShowModal etc methods to the IonModal
-      modal = React.cloneElement(modal, {
-        ionShowModal: this.ionShowModal,
-        ionKeyboardHeight: this.state.ionKeyboardHeight,
-        platform: this.props.platform
-      });
-    }
-    this.setState({
-      ionModal: modal
-    });
+    this.setState({ ionModal: modal });
   },
   ionShowPopover(popover) {    
     this.setState({ ionPopover: popover });
@@ -118,7 +163,12 @@ var IonBody = React.createClass({
   },
   componentDidMount: function() {
     window.addEventListener('native.keyboardshow', this.handleKeyboard);
-    window.addEventListener('native.keyboardhide', this.handleKeyboard);
+    window.addEventListener('native.keyboardhide', this.handleKeyboard);    
+    if (this.props.platform.isCordova && !_.isEmpty(this.state.ionKeyboard)) {
+      var keyboard = IonKeyboard(this.props.platform);
+      keyboard.disableScroll();
+      this.setState({ ionKeyboard: keyboard });
+    }
   },
   componentWillUnmount: function() {
     window.removeEventListener('native.keyboardshow', this.handleKeyboard);
@@ -126,11 +176,6 @@ var IonBody = React.createClass({
   },
   render() {
     var platform = this.props.platform;
-    var keyboard = false;
-    if (platform.isCordova) {
-      keyboard = IonKeyboard(platform);
-      keyboard.disableScroll();
-    }
     var classes = classnames({
       'ionic-body': true,
       'grade-a': true, // needs improvement https://github.com/delta98/ionic-platform-body-classes
@@ -144,30 +189,7 @@ var IonBody = React.createClass({
     });    
     return (
       <div className={classes}>
-          {React.cloneElement(this.props.children, {
-            platform: platform,
-            keyboard: keyboard,
-            ionSetTransitionDirection: this.ionSetTransitionDirection,
-            ionNavDirection: this.state.ionNavDirection,
-            ionModal: this.state.ionModal,
-            ionShowModal: this.ionShowModal,
-            ionUpdateActionSheet: this.ionUpdateActionSheet,
-            ionUpdatePopup: this.ionUpdatePopup,
-            ionShowBackdrop: this.ionShowBackdrop,
-            ionShowLoading: this.ionShowLoading,
-            ionKeyboardHeight: this.state.ionKeyboardHeight,
-            ionUpdateHasX: this.ionUpdateHasX,
-            ionHasTabs: this.state.ionHasTabs,
-            ionHasTabsTop: this.state.ionHasTabsTop,
-            ionHasHeader: this.state.ionHasHeader,
-            ionHasSubheader: this.state.ionHasSubheader,
-            ionHasFooter: this.state.ionHasFooter,
-            ionHasSubfooter: this.state.ionHasSubfooter,
-            ionSnapper: this.state.ionSnapper,
-            ionSetSnapper: this.ionSetSnapper,
-            ionPopover: this.state.ionPopover,
-            ionShowPopover: this.ionShowPopover
-           })}
+        { this.props.children }
         <IonModalContainer>{this.state.ionModal}</IonModalContainer>
         <IonBackdrop show={this.state.ionBackdrop} />
         <IonLoading

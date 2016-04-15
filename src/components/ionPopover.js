@@ -12,11 +12,17 @@ var IonPopover = React.createClass({
     return {
     };
   },
+  contextTypes: {
+    ionShowPopover: React.PropTypes.oneOfType([
+      React.PropTypes.func,
+      React.PropTypes.bool
+    ])
+  },
   backdropClicked: function(e) {
     e.preventDefault();
     if (e.target.className.indexOf("popover-backdrop") >= 0) {
       // if clicked on backdrop outside of the popover, close popover
-      this.props.ionShowPopover(false);
+      this.context.ionShowPopover(false);
     }    
   },
   getInitialState: function() {
@@ -24,7 +30,7 @@ var IonPopover = React.createClass({
       popoverBottomClass: false,
       popoverStyle: {},
       arrowStyle: {}
-    }
+    };
   },
   ignoreClick: function(e) {
     e && e.stopPropagation(); // so it won't close the popover
