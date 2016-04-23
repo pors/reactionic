@@ -1,6 +1,6 @@
 # React-Ionic Guide
 
-If you just got here and miss some context, check out the [README](https://github.com/pors/reactionic/blob/master/README.md) first, and have a look at the [React-Ionic site](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/router.jsx).
+If you just got here and miss some context, check out the [README](https://github.com/reactionic/reactionic/blob/master/README.md) first, and have a look at the [React-Ionic site](http://reactionic.github.io/).
 
 ## Routing
 
@@ -37,7 +37,7 @@ Then simply call main() or if you work with Meteor you need to run it with Meteo
       main();
     }
 
-See the [kitchensink router](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/router.jsx) for a more extensive example.
+See the [kitchensink router](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/router.jsx) for a more extensive example.
 
 ## Layout Structure
 
@@ -49,8 +49,8 @@ This multi-layer approach allows for creating one or more templates for multiple
 
 The actual Page component will the inserted into the IonView component by the router as `this.props.children`. The same is true for embedding the Layout into the IonBody component.
 
-For actual examples of this approach see: [App](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/app.jsx
-) > [Layout](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/layouts/main.jsx) > [Page](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/about.jsx).
+For actual examples of this approach see: [App](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/app.jsx
+) > [Layout](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/layouts/main.jsx) > [Page](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/about.jsx).
 
 
 
@@ -83,7 +83,7 @@ Where the backButton is created from the IonNavBackButton component:
       />
     );
 
-A complete example can be found [here](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/layouts/main.jsx).
+A complete example can be found [here](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/layouts/main.jsx).
 
 ## Global States
 
@@ -196,7 +196,7 @@ and
 
 **More information**
 
-- Example: [Action Sheet demo](https://app.pors.net/actionSheet) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/actionSheet.jsx))
+- Example: [Action Sheet demo](https://app.pors.net/actionSheet) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/actionSheet.jsx))
 - SCSS: [action-sheet.scss](https://github.com/driftyco/ionic/blob/master/scss/_action-sheet.scss)
 - Angular.js ref: [$ionicActionSheet](http://ionicframework.com/docs/api/service/$ionicActionSheet/)
 
@@ -211,7 +211,7 @@ Shows and hides a backdrop over the UI. Appears behind popups, loading, and othe
 
 **More information**
 
-- Example: [Backdrop demo](https://app.pors.net/backdrop) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/backdrop.jsx))
+- Example: [Backdrop demo](https://app.pors.net/backdrop) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/backdrop.jsx))
 - SCSS: [backdrop.scss](https://github.com/driftyco/ionic/blob/master/scss/_backdrop.scss)
 - Angular.js ref: [$ionicBackdrop](http://ionicframework.com/docs/api/service/$ionicBackdrop/) 
 
@@ -238,7 +238,7 @@ The full range of button options of Ionic is supported next to either onClick or
 
 **More information**
 
-- Example: [Buttons demo](https://app.pors.net/buttons) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/buttons.jsx))
+- Example: [Buttons demo](https://app.pors.net/buttons) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/buttons.jsx))
 - SCSS: [button.scss](https://github.com/driftyco/ionic/blob/master/scss/_button.scss)
 
 
@@ -256,7 +256,7 @@ Some form elements don't have Ionic specific javascript functionality. React-Ion
     // for the full example check out the source link below
 
     
-- Example: [From Elements demo](https://app.pors.net/forms) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/forms.jsx))
+- Example: [From Elements demo](https://app.pors.net/forms) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/forms.jsx))
 - SCSS: [form.scss](https://github.com/driftyco/ionic/blob/master/scss/_form.scss), [checkbox.scss](https://github.com/driftyco/ionic/blob/master/scss/_checkbox.scss), [radio.scss](https://github.com/driftyco/ionic/blob/master/scss/_radio.scss), [toggle.scss](https://github.com/driftyco/ionic/blob/master/scss/_toggle.scss).
 - Ionic style ref: [Forms & Inputs](http://ionicframework.com/docs/components/#forms)
 - Angular.js ref: [Form Inputs](http://ionicframework.com/docs/api/directive/ionCheckbox/) 
@@ -284,7 +284,7 @@ Footers are regions at the bottom of a screen that can contain various types of 
     
 **More information**
 
-- Example: [Header & Footers demo](https://app.pors.net/headersFooters) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/headersFooters.jsx))
+- Example: [Header & Footers demo](https://app.pors.net/headersFooters) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/headersFooters.jsx))
 - SCSS: [bar.scss](https://github.com/driftyco/ionic/blob/master/scss/_bar.scss)
 - Ionic style ref: [Header](http://ionicframework.com/docs/components/#header) & [Footer](http://ionicframework.com/docs/components/#footer)
 - Angular.js ref: [ion-header-bar](http://ionicframework.com/docs/api/directive/ionHeaderBar/) 
@@ -306,7 +306,7 @@ The List is a common and simple way of displaying... that's right, a list. This 
 
 **More information**
     
-- Example: [Lists demo](https://app.pors.net/lists) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/lists.jsx))
+- Example: [Lists demo](https://app.pors.net/lists) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/lists.jsx))
 - SCSS: [list.scss](https://github.com/driftyco/ionic/blob/master/scss/_list.scss) & [items.scss](https://github.com/driftyco/ionic/blob/master/scss/_items.scss)
 - Ionic style ref: [List](http://ionicframework.com/docs/components/#list)
 - Angular.js ref: [ion-list](http://ionicframework.com/docs/api/directive/ionList/) 
@@ -329,7 +329,7 @@ An overlay that can be used to indicate activity while blocking user interaction
 
 **More information**
     
-- Example: [Loading demo](https://app.pors.net/loading) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/loading.jsx))
+- Example: [Loading demo](https://app.pors.net/loading) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/loading.jsx))
 - SCSS: [loading.scss](https://github.com/driftyco/ionic/blob/master/scss/_loading.scss)
 - Angular.js ref: [$ionicLoading](http://ionicframework.com/docs/api/service/$ionicLoading/) 
 
@@ -366,7 +366,7 @@ The Modal is a content pane that can go over the user’s main view temporarily.
 
 **More information**
     
-- Example: [Modal demo](https://app.pors.net/modal) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/modal.jsx))
+- Example: [Modal demo](https://app.pors.net/modal) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/modal.jsx))
 - SCSS: [modal.scss](https://github.com/driftyco/ionic/blob/master/scss/_modal.scss)
 - Angular.js ref: [$ionicModal](http://ionicframework.com/docs/api/service/$ionicModal/)
 
@@ -396,7 +396,7 @@ Then add an onClick event on the button that will open the popover calling:
 
 **More information**
 
-- Example: [Popover demo](https://app.pors.net/popover) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/popover.jsx))
+- Example: [Popover demo](https://app.pors.net/popover) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/popover.jsx))
 - SCSS: [popover.scss](https://github.com/driftyco/ionic/blob/master/scss/_popover.scss)
 - Angular.js ref: [$ionicPopover](http://ionicframework.com/docs/api/service/$ionicPopover/) 
 
@@ -429,7 +429,7 @@ For different Popup types see the example demo source code below.
 
 **More information**
     
-- Example: [Popup demo](https://app.pors.net/popup) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/popup.jsx))
+- Example: [Popup demo](https://app.pors.net/popup) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/popup.jsx))
 - SCSS: [popup.scss](https://github.com/driftyco/ionic/blob/master/scss/_popup.scss)
 - Angular.js ref: [$ionicPopup](http://ionicframework.com/docs/api/service/$ionicPopup/) 
 
@@ -444,11 +444,11 @@ The side-menu wraps two components inside the `IonSideMenuContainer`: `IonSideMe
 
 `IonSideMenus` contains the two actual side menus wrapped in the `IonSideMenu` component.
 
-A complete example can be found [here](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/layouts/main.jsx).
+A complete example can be found [here](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/layouts/main.jsx).
 
 **More information**
     
-- Example: [Side Menu demo](https://app.pors.net/sideMenus) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/sidemenus.jsx))
+- Example: [Side Menu demo](https://app.pors.net/sideMenus) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/sidemenus.jsx))
 - SCSS: [menu.scss](https://github.com/driftyco/ionic/blob/master/scss/_menu.scss)
 - Angular.js ref: [ion-side-menus](http://ionicframework.com/docs/api/directive/ionSideMenus/) 
 
@@ -469,7 +469,7 @@ Simply add a div for each slide inside the `IonSlideBox` component like:
 
 **More information**
     
-- Example: [Slide box demo](https://app.pors.net/slideBox) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/slidebox.jsx))
+- Example: [Slide box demo](https://app.pors.net/slideBox) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/slidebox.jsx))
 - SCSS: [slide-box.scss](https://github.com/driftyco/ionic/blob/master/scss/_slide-box.scss)
 - Angular.js ref: [ion-slide-box](http://ionicframework.com/docs/api/directive/ionSlideBox/) 
 
@@ -488,7 +488,7 @@ And there a are a few more spinners to choose from, see the demo source.
 
 **More information**
     
-- Example: [Spinner demo](https://app.pors.net/spinners) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/spinners.jsx))
+- Example: [Spinner demo](https://app.pors.net/spinners) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/spinners.jsx))
 - SCSS: [spinner.scss](https://github.com/driftyco/ionic/blob/master/scss/_spinner.scss)
 - Angular.js ref: [ion-spinner](http://ionicframework.com/docs/api/directive/ionSpinner/) 
 
@@ -507,7 +507,7 @@ Tabs are a horizontal region of buttons or links that allow for a consistent nav
     
 **More information**
     
-- Example: [Tabs demo](https://app.pors.net/tabs/one) ([source](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/tabs.jsx))
+- Example: [Tabs demo](https://app.pors.net/tabs/one) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/tabs.jsx))
 - SCSS: [tabs.scss](https://github.com/driftyco/ionic/blob/master/scss/_tabs.scss)
 - Ionic style ref: [Tabs](http://ionicframework.com/docs/components/#tabs)
 - Angular.js ref: [ion-tabs](http://ionicframework.com/docs/api/directive/ionTabs/) 
@@ -531,18 +531,18 @@ The default platform object looks like this:
 
 and is made available as a context: `this.context.ionPlatform`.
 
-An example of how the platform object can be set dynamically is provided [here](https://github.com/pors/reactionic-kitchensink/blob/master/app/client/imports/components/utils/helpers.jsx) (requires Meteor).
+An example of how the platform object can be set dynamically is provided [here](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/utils/helpers.jsx) (requires Meteor).
 
 ### Timeouts
 
-When using time-out in a React app, it's best to use something like this [setTimeoutMixin](https://github.com/pors/reactionic/blob/master/src/helpers/timeout.js
+When using time-out in a React app, it's best to use something like this [setTimeoutMixin](https://github.com/reactionic/reactionic/blob/master/src/helpers/timeout.js
 ) mixing.
 
 If you are working in a Meteor app, `Meteor.setTimeout()` will do as well.
 
 ### Keyboard
 
-React-Ionic makes use of a Cordova keyboard plugin for some direct keyboard manipulation and access. This [keyboard helper](https://github.com/pors/reactionic/blob/master/src/helpers/keyboard.js
+React-Ionic makes use of a Cordova keyboard plugin for some direct keyboard manipulation and access. This [keyboard helper](https://github.com/reactionic/reactionic/blob/master/src/helpers/keyboard.js
 ) is wrapping that plugin.
 
 This IonKeyboard object is available as a context: `this.context.ionKeyboard`.
