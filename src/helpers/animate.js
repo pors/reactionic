@@ -14,8 +14,8 @@ class RouteCSSTransitionGroup extends React.Component {
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
-    if (nextContext.location.pathname !== this.context.location.pathname) {
-      this.setState({ previousPathname: this.context.location.pathname });
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.setState({ previousPathname: this.props.location.pathname });
     }
   }
 
@@ -26,7 +26,7 @@ class RouteCSSTransitionGroup extends React.Component {
     return (
       <ReactCSSTransitionGroup {...props}>
         <StaticContainer
-          key={previousPathname || this.context.location.pathname}
+          key={previousPathname || this.props.location.pathname}
             shouldUpdate={!previousPathname}
           >
           {children}
@@ -42,7 +42,7 @@ class RouteCSSTransitionGroup extends React.Component {
   }
 };
 
-RouteCSSTransitionGroup.contextTypes = {
+RouteCSSTransitionGroup.propTypes = {
   location: React.PropTypes.object
 };
 

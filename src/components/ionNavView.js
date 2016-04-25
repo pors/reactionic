@@ -4,7 +4,8 @@ import RouteCSSTransitionGroup from '../helpers/animate';
 
 var IonNavView = React.createClass({
   propTypes: {
-    customClasses: React.PropTypes.string
+    customClasses: React.PropTypes.string,
+    location: React.PropTypes.object.isRequired,
   },
   getDefaultProps: function() {
     // no need to set default platform and ionSetTransitionDirection as it is propogated from IonBody
@@ -28,7 +29,7 @@ var IonNavView = React.createClass({
     );
     return (
       <RouteCSSTransitionGroup
-      component="div" 
+      component="div"
       transitionEnterTimeout={platform.transitionTimeOut}
       transitionLeaveTimeout={platform.transitionTimeOut}
       transitionName= { {
@@ -38,6 +39,7 @@ var IonNavView = React.createClass({
                        leaveActive: 'nav-view-active'
                        } }
       className={classes}
+      {...this.props}
       >
         { this.props.children }
       </RouteCSSTransitionGroup>

@@ -11,7 +11,8 @@ import _ from 'lodash';
 
 var IonBody = React.createClass({
   propTypes: {
-    platform: React.PropTypes.object
+    platform: React.PropTypes.object,
+    location: React.PropTypes.object.isRequired,
   },
   getDefaultProps: function() {
     return {
@@ -50,7 +51,7 @@ var IonBody = React.createClass({
     ionSetTransitionDirection: React.PropTypes.func,
     ionNavDirection: React.PropTypes.string,
     ionModal: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.bool]),
-    ionShowModal: React.PropTypes.func,   
+    ionShowModal: React.PropTypes.func,
     ionUpdateActionSheet: React.PropTypes.func,
     ionUpdatePopup: React.PropTypes.func,
     ionShowBackdrop: React.PropTypes.func,
@@ -112,7 +113,7 @@ var IonBody = React.createClass({
   ionShowModal(modal) {
     this.setState({ ionModal: modal });
   },
-  ionShowPopover(popover) {    
+  ionShowPopover(popover) {
     this.setState({ ionPopover: popover });
   },
   ionUpdateActionSheet(actionSheet) {
@@ -142,7 +143,7 @@ var IonBody = React.createClass({
   },
   componentWillReceiveProps(nextProps, nextContext) {
     // close modal etc. when navigating away from page (e.g. with browser back button)
-    if (nextContext.location.pathname !== this.context.location.pathname) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
       if (this.state.ionModal) { this.ionShowModal(false); }
       if (this.state.ionPopover) { this.ionShowPopover(false); }
       if (this.state.ionBackdrop) { this.ionShowBackdrop(false); }
@@ -163,7 +164,7 @@ var IonBody = React.createClass({
   },
   componentDidMount: function() {
     window.addEventListener('native.keyboardshow', this.handleKeyboard);
-    window.addEventListener('native.keyboardhide', this.handleKeyboard);    
+    window.addEventListener('native.keyboardhide', this.handleKeyboard);
     if (this.props.platform.isCordova && !_.isEmpty(this.state.ionKeyboard)) {
       var keyboard = IonKeyboard(this.props.platform);
       keyboard.disableScroll();
@@ -186,7 +187,7 @@ var IonBody = React.createClass({
       'action-sheet-open': !_.isEmpty(this.state.ionActionSheet),
       'popup-open': !_.isEmpty(this.state.ionPopup),
       'keyboard-open': this.state.ionKeyboardHeight
-    });    
+    });
     return (
       <div className={classes}>
         { this.props.children }
@@ -207,9 +208,5 @@ var IonBody = React.createClass({
     );
   }
 });
-
-IonBody.contextTypes = {
-  location: React.PropTypes.object
-};
 
 export default IonBody;
