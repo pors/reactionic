@@ -46,8 +46,10 @@ var IonButton = React.createClass({
         this.props.onClick(e);
       }
 
-      this.context.router.goBack();
-
+      // if history is set, go to previous location
+      if (!this.props.link) {
+        this.context.router.goBack();
+      }
       // return false to prevent defaults
       return false;
     } else if (this.props.onClick) {
