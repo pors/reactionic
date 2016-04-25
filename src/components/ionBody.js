@@ -44,6 +44,9 @@ var IonBody = React.createClass({
       ionKeyboard: {}
     };
   },
+  contextTypes: {
+    location: React.PropTypes.object
+  },
   childContextTypes: {
     ionPlatform: React.PropTypes.object,
     ionKeyboard: React.PropTypes.object,
@@ -68,8 +71,7 @@ var IonBody = React.createClass({
     ionPopover: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.bool]),
     ionShowPopover: React.PropTypes.func,
     ionActionSheet: React.PropTypes.object,
-    ionPopup: React.PropTypes.object,
-    location: React.PropTypes.object
+    ionPopup: React.PropTypes.object
   },
   getChildContext: function() {
     return {
@@ -96,8 +98,7 @@ var IonBody = React.createClass({
       ionPopover: this.state.ionPopover,
       ionShowPopover: this.ionShowPopover,
       ionActionSheet: this.state.ionActionSheet,
-      ionPopup: this.state.ionPopup,
-      location: this.props.location
+      ionPopup: this.state.ionPopup
     };
   },
   ionSetSnapper(snapper) {
@@ -144,7 +145,7 @@ var IonBody = React.createClass({
   },
   componentWillReceiveProps(nextProps, nextContext) {
     // close modal etc. when navigating away from page (e.g. with browser back button)
-    if (nextProps.children.props.location.pathname !== this.props.children.props.location.pathname) {
+    if (nextContext.location.pathname !== this.context.location.pathname) {
       if (this.state.ionModal) { this.ionShowModal(false); }
       if (this.state.ionPopover) { this.ionShowPopover(false); }
       if (this.state.ionBackdrop) { this.ionShowBackdrop(false); }
@@ -205,13 +206,9 @@ var IonBody = React.createClass({
           ionPopup={this.state.ionPopup}
           ionUpdatePopup={this.ionUpdatePopup} />
         <IonPopover ionShowPopover={this.ionShowPopover}>{this.state.ionPopover}</IonPopover>
-        </div>
+      </div>
     );
   }
 });
-
-IonBody.contextTypes = {
-  location: React.PropTypes.object
-};
 
 export default IonBody;
