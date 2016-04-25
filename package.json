@@ -33,15 +33,17 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "lodash": "^4.5.1",
-    "react": "^15.0.0",
     "react-addons-css-transition-group": "^15.0.0",
-    "react-dom": "^15.0.0",
     "history": "^1.17.0",
     "react-router": "^2.0.0",
     "react-slick": "^0.12.0",
     "react-static-container": "^1.0.0",
     "snapjs": "^1.2.1",
     "transitionend-property": "0.0.2"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
   },
   "devDependencies": {
     "babel-cli": "6.5.1",
