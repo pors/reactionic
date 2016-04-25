@@ -33,7 +33,8 @@ var IonButton = React.createClass({
     };
   },
   contextTypes: {
-    ionSetTransitionDirection: React.PropTypes.func
+    ionSetTransitionDirection: React.PropTypes.func,
+    history: React.PropTypes.object
   },
   onClick: function(e) {
     if (this.props.backButton) {
@@ -46,8 +47,8 @@ var IonButton = React.createClass({
       }
 
       // if history is set, go to previous location
-      if (!this.props.link && this.props.history) {
-        this.props.history.goBack();
+      if (!this.props.link && this.context.history) {
+        this.context.history.goBack();
       }
       // return false to prevent defaults
       return false;
@@ -74,7 +75,7 @@ var IonButton = React.createClass({
       colorClass,
       this.props.customClasses
     );
-    var button;        
+    var button;
     if (this.props.link) {
       button = (
         <Link className={ classes } to={this.props.link} onClick={this.onClick}>

@@ -23,7 +23,7 @@ var IonPopover = React.createClass({
     if (e.target.className.indexOf("popover-backdrop") >= 0) {
       // if clicked on backdrop outside of the popover, close popover
       this.context.ionShowPopover(false);
-    }    
+    }
   },
   getInitialState: function() {
     return {
@@ -54,7 +54,7 @@ var IonPopover = React.createClass({
       var popoverHeight = popover.offsetHeight;
 
       var popoverCSS = {
-        marginLeft: '0',
+        marginLeft: '0px',
         opacity: 1,
         left: buttonPositionLeft + buttonWidth / 2 - popoverWidth / 2
       };
@@ -79,7 +79,7 @@ var IonPopover = React.createClass({
     }
 
   },
-  render() {    
+  render() {
     var popOverClasses = classnames(
       {'popover': true,
        'popover-bottom': this.state.popoverBottomClass}
@@ -100,7 +100,7 @@ var IonPopover = React.createClass({
         </div>
         </div>
       );
-    }    
+    }
     return (
       <div>
       {content}
