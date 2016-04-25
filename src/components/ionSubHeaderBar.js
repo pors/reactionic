@@ -19,12 +19,7 @@ var IonSubHeaderBar = React.createClass({
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubheader', true);
   },
-  componentDidMount: function() {
-    const { route } = this.props;
-    const { router } = this.context;
-    router.setRouteLeaveHook(route, this.routerWillLeave);
-  },
-  routerWillLeave(nextLocation) {
+  componentWillUnmount: function() {
     this.context.ionUpdateHasX('ionHasSubheader', false);
   },
   render() {

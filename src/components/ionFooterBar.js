@@ -20,12 +20,7 @@ var IonFooterBar = React.createClass({
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasFooter', true);
   },
-  componentDidMount: function() {
-    const { route } = this.props;
-    const { router } = this.context;
-    router.setRouteLeaveHook(route, this.routerWillLeave);
-  },
-  routerWillLeave(nextLocation) {
+  componentWillUnmount: function() {
     this.context.ionUpdateHasX('ionHasFooter', false);
   },
   render() {

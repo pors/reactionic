@@ -18,12 +18,7 @@ var IonSubFooterBar = React.createClass({
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubfooter', true);
   },
-  componentDidMount: function() {
-    const { route } = this.props;
-    const { router } = this.context;
-    router.setRouteLeaveHook(route, this.routerWillLeave);
-  },
-  routerWillLeave(nextLocation) {
+  componentWillUnmount: function() {
     this.context.ionUpdateHasX('ionHasSubfooter', false);
   },
   render() {
