@@ -21,7 +21,7 @@ React-Ionic is useful for you if you:
 
 ## Demo
 
-[Kitchen sink demo](http://pors.github.io/reactionic/#demo) showing off all features ([source](https://github.com/pors/reactionic-kitchensink))
+[Kitchen sink demo](http://reactionic.github.io/#demo) showing off all features ([source](https://github.com/reactionic/reactionic-kitchensink))
 
 ## Quick Start
 
@@ -33,11 +33,11 @@ Or just follow the steps below:
 
 ### Step 1: download
 
-The easiest way to start is to download the [kitchen sink demo](https://github.com/pors/reactionic-kitchensink), and run it locally (see the [kitchensink README](https://github.com/pors/reactionic-kitchensink/blob/master/README.md) how) to try it out.
+The easiest way to start is to download the [kitchen sink demo](https://github.com/reactionic/reactionic-kitchensink), and run it locally (see the [kitchensink README](https://github.com/reactionic/reactionic-kitchensink/blob/master/README.md) how) to try it out.
 
 ### Step 2: code
 
-There is no step 2. Just go ahead and change things to make it your own. Have a look at the [guide](https://github.com/pors/reactionic/blob/master/GUIDE.md) for more detail.
+There is no step 2. Just go ahead and change things to make it your own. Have a look at the [guide](https://github.com/reactionic/reactionic/blob/master/GUIDE.md) for more detail.
 
 ## Status
 
@@ -45,7 +45,7 @@ Please be patient :)
 
 ## Guide
 
-A detailed description of each component can be found in the [guide](https://github.com/pors/reactionic/blob/master/GUIDE.md).
+A detailed description of each component can be found in the [guide](https://github.com/reactionic/reactionic/blob/master/GUIDE.md).
 
 ## Contribute
 
@@ -68,4 +68,4 @@ Inspiration and code was "borrowed" from:
 
 ## License
 
-[Apache License, Version 2.0](https://github.com/pors/reactionic/blob/master/LICENSE)
+[Apache License, Version 2.0](https://github.com/reactionic/reactionic/blob/master/LICENSE)

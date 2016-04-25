@@ -1,6 +1,6 @@
 {
   "name": "reactionic",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React Ionic Library. Use Ionic to build hybrid mobile apps with React. No Angular needed.",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pors/reactionic.git"
+    "url": "https://github.com/reactionic/reactionic.git"
   },
   "keywords": [
     "React",
@@ -27,9 +27,9 @@
   "author": "Mark Pors <npm@pors.net> (http://pors.net/)",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/pors/reactionic/issues"
+    "url": "https://github.com/reactionic/reactionic/issues"
   },
-  "homepage": "http://pors.github.io/reactionic/",
+  "homepage": "http://reactionic.github.io/",
   "dependencies": {
     "classnames": "^2.2.3",
     "lodash": "^4.5.1",
