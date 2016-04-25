@@ -1,10 +1,10 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Lifecycle } from 'react-router';
 
 var IonSubFooterBar = React.createClass({
   propTypes: {
-    customClasses: React.PropTypes.string
+    customClasses: React.PropTypes.string,
+    route: React.PropTypes.object.isRequired,
   },
   getDefaultProps: function() {
     return {
@@ -12,12 +12,17 @@ var IonSubFooterBar = React.createClass({
     };
   },
   contextTypes: {
-    ionUpdateHasX: React.PropTypes.func
+    ionUpdateHasX: React.PropTypes.func,
+    router: React.PropTypes.object.isRequired,
   },
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubfooter', true);
   },
-  mixins: [ Lifecycle ],
+  componentDidMount: function() {
+    const { route } = this.props;
+    const { router } = this.context;
+    router.setRouteLeaveHook(route, this.routerWillLeave);
+  },
   routerWillLeave(nextLocation) {
     this.context.ionUpdateHasX('ionHasSubfooter', false);
   },

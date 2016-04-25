@@ -1,10 +1,10 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Lifecycle } from 'react-router';
 
 var IonSubHeaderBar = React.createClass({
   propTypes: {
-    customClasses: React.PropTypes.string
+    customClasses: React.PropTypes.string,
+    route: React.PropTypes.object.isRequired,
   },
   getDefaultProps: function() {
     return {
@@ -13,12 +13,17 @@ var IonSubHeaderBar = React.createClass({
   },
   contextTypes: {
     ionUpdateHasX: React.PropTypes.func,
-    ionHasTabsTop: React.PropTypes.bool
+    ionHasTabsTop: React.PropTypes.bool,
+    router: React.PropTypes.object.isRequired,
   },
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubheader', true);
   },
-  mixins: [ Lifecycle ],
+  componentDidMount: function() {
+    const { route } = this.props;
+    const { router } = this.context;
+    router.setRouteLeaveHook(route, this.routerWillLeave);
+  },
   routerWillLeave(nextLocation) {
     this.context.ionUpdateHasX('ionHasSubheader', false);
   },
