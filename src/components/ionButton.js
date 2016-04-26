@@ -34,7 +34,7 @@ var IonButton = React.createClass({
   },
   contextTypes: {
     ionSetTransitionDirection: React.PropTypes.func,
-    router: React.PropTypes.object.isRequired
+    router: React.PropTypes.object
   },
   onClick: function(e) {
     if (this.props.backButton) {

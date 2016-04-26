@@ -28,7 +28,7 @@ var IonNavView = React.createClass({
     );
     return (
       <RouteCSSTransitionGroup
-      component="div" 
+      component="div"
       transitionEnterTimeout={platform.transitionTimeOut}
       transitionLeaveTimeout={platform.transitionTimeOut}
       transitionName= { {
@@ -38,6 +38,7 @@ var IonNavView = React.createClass({
                        leaveActive: 'nav-view-active'
                        } }
       className={classes}
+      {...this.props}
       >
         { this.props.children }
       </RouteCSSTransitionGroup>

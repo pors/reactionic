@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Lifecycle } from 'react-router';
 
 var IonSubFooterBar = React.createClass({
   propTypes: {
@@ -17,8 +16,7 @@ var IonSubFooterBar = React.createClass({
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubfooter', true);
   },
-  mixins: [ Lifecycle ],
-  routerWillLeave(nextLocation) {
+  componentWillUnmount: function() {
     this.context.ionUpdateHasX('ionHasSubfooter', false);
   },
   render() {
