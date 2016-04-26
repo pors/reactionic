@@ -14,7 +14,6 @@ var IonSubHeaderBar = React.createClass({
   contextTypes: {
     ionUpdateHasX: React.PropTypes.func,
     ionHasTabsTop: React.PropTypes.bool,
-    router: React.PropTypes.object.isRequired,
   },
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubheader', true);

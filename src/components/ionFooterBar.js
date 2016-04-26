@@ -15,7 +15,6 @@ var IonFooterBar = React.createClass({
   contextTypes: {
     ionUpdateHasX: React.PropTypes.func.isRequired,
     ionHasTabs: React.PropTypes.bool,
-    router: React.PropTypes.object.isRequired,
   },
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasFooter', true);

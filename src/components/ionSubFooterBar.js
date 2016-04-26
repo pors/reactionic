@@ -13,7 +13,6 @@ var IonSubFooterBar = React.createClass({
   },
   contextTypes: {
     ionUpdateHasX: React.PropTypes.func,
-    router: React.PropTypes.object.isRequired,
   },
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubfooter', true);
