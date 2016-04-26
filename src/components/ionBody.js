@@ -44,13 +44,16 @@ var IonBody = React.createClass({
       ionKeyboard: {}
     };
   },
+  contextTypes: {
+    location: React.PropTypes.object
+  },
   childContextTypes: {
     ionPlatform: React.PropTypes.object,
     ionKeyboard: React.PropTypes.object,
     ionSetTransitionDirection: React.PropTypes.func,
     ionNavDirection: React.PropTypes.string,
     ionModal: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.bool]),
-    ionShowModal: React.PropTypes.func,   
+    ionShowModal: React.PropTypes.func,
     ionUpdateActionSheet: React.PropTypes.func,
     ionUpdatePopup: React.PropTypes.func,
     ionShowBackdrop: React.PropTypes.func,
@@ -112,7 +115,7 @@ var IonBody = React.createClass({
   ionShowModal(modal) {
     this.setState({ ionModal: modal });
   },
-  ionShowPopover(popover) {    
+  ionShowPopover(popover) {
     this.setState({ ionPopover: popover });
   },
   ionUpdateActionSheet(actionSheet) {
@@ -163,7 +166,7 @@ var IonBody = React.createClass({
   },
   componentDidMount: function() {
     window.addEventListener('native.keyboardshow', this.handleKeyboard);
-    window.addEventListener('native.keyboardhide', this.handleKeyboard);    
+    window.addEventListener('native.keyboardhide', this.handleKeyboard);
     if (this.props.platform.isCordova && !_.isEmpty(this.state.ionKeyboard)) {
       var keyboard = IonKeyboard(this.props.platform);
       keyboard.disableScroll();
@@ -186,7 +189,7 @@ var IonBody = React.createClass({
       'action-sheet-open': !_.isEmpty(this.state.ionActionSheet),
       'popup-open': !_.isEmpty(this.state.ionPopup),
       'keyboard-open': this.state.ionKeyboardHeight
-    });    
+    });
     return (
       <div className={classes}>
         { this.props.children }
@@ -203,13 +206,9 @@ var IonBody = React.createClass({
           ionPopup={this.state.ionPopup}
           ionUpdatePopup={this.ionUpdatePopup} />
         <IonPopover ionShowPopover={this.ionShowPopover}>{this.state.ionPopover}</IonPopover>
-        </div>
+      </div>
     );
   }
 });
-
-IonBody.contextTypes = {
-  location: React.PropTypes.object
-};
 
 export default IonBody;

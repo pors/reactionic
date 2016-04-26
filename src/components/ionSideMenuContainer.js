@@ -5,14 +5,22 @@ var IonSideMenuContainer = React.createClass({
   contextTypes: {
     ionSetSnapper: React.PropTypes.func
   },
+  propTypes: {
+    disable: React.PropTypes.string
+  },
+  getDefaultProps: function() {
+    return {
+      disable: 'none'
+    };
+  },
   componentDidMount: function() {
     var sideMenuContent = document.getElementById('IonSideMenuContent');
     let snapper = new Snap({
       element: sideMenuContent,
-      disable: 'none'
+      disable: this.props.disable,
     });
     if (typeof snapper.toggle === 'undefined') {
-      // add a toggle method if it doesn't exist yet (in some future version)      
+      // add a toggle method if it doesn't exist yet (in some future version)
       snapper.toggle = function(direction) {
         if( this.state().state==direction ){
           this.close();

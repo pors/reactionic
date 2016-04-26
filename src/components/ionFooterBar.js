@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Lifecycle } from 'react-router';
 
 var IonFooterBar = React.createClass({
   propTypes: {
@@ -19,8 +18,7 @@ var IonFooterBar = React.createClass({
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasFooter', true);
   },
-  mixins: [ Lifecycle ],
-  routerWillLeave(nextLocation) {
+  componentWillUnmount: function() {
     this.context.ionUpdateHasX('ionHasFooter', false);
   },
   render() {

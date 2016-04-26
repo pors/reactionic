@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Lifecycle } from 'react-router';
 
 var IonSubHeaderBar = React.createClass({
   propTypes: {
@@ -18,8 +17,7 @@ var IonSubHeaderBar = React.createClass({
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubheader', true);
   },
-  mixins: [ Lifecycle ],
-  routerWillLeave(nextLocation) {
+  componentWillUnmount: function() {
     this.context.ionUpdateHasX('ionHasSubheader', false);
   },
   render() {
