@@ -11,7 +11,8 @@ import _ from 'lodash';
 
 var IonBody = React.createClass({
   propTypes: {
-    platform: React.PropTypes.object
+    platform: React.PropTypes.object,
+    location: React.PropTypes.object.isRequired
   },
   getDefaultProps: function() {
     return {
@@ -44,10 +45,8 @@ var IonBody = React.createClass({
       ionKeyboard: {}
     };
   },
-  contextTypes: {
-    location: React.PropTypes.object
-  },
   childContextTypes: {
+    location: React.PropTypes.object,
     ionPlatform: React.PropTypes.object,
     ionKeyboard: React.PropTypes.object,
     ionSetTransitionDirection: React.PropTypes.func,
@@ -75,6 +74,7 @@ var IonBody = React.createClass({
   },
   getChildContext: function() {
     return {
+      location: this.props.location,
       ionPlatform: this.props.platform,
       ionKeyboard: this.state.ionKeyboard,
       ionSetTransitionDirection: this.ionSetTransitionDirection,
@@ -145,7 +145,7 @@ var IonBody = React.createClass({
   },
   componentWillReceiveProps(nextProps, nextContext) {
     // close modal etc. when navigating away from page (e.g. with browser back button)
-    if (nextContext.location.pathname !== this.context.location.pathname) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
       if (this.state.ionModal) { this.ionShowModal(false); }
       if (this.state.ionPopover) { this.ionShowPopover(false); }
       if (this.state.ionBackdrop) { this.ionShowBackdrop(false); }
