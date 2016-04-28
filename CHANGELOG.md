@@ -2,6 +2,29 @@
 
 ## [Unreleased](https://github.com/reactionic/reactionic/tree/HEAD)
 
+[Full Changelog](https://github.com/reactionic/reactionic/compare/v1.0-beta...HEAD)
+
+**Implemented enhancements:**
+
+- Upgrade to react 15 [\#28](https://github.com/reactionic/reactionic/issues/28)
+
+**Closed issues:**
+
+- Update guide to reflect react-router v2 changes [\#34](https://github.com/reactionic/reactionic/issues/34)
+
+## [v1.0-beta](https://github.com/reactionic/reactionic/tree/v1.0-beta) (2016-04-26)
+[Full Changelog](https://github.com/reactionic/reactionic/compare/v0.2.1...v1.0-beta)
+
+**Closed issues:**
+
+- Finish Guide [\#4](https://github.com/reactionic/reactionic/issues/4)
+
+**Merged pull requests:**
+
+- upgrade to react 15 and router v2 [\#32](https://github.com/reactionic/reactionic/pull/32) ([primeminister](https://github.com/primeminister))
+- upgrading to react 15 [\#30](https://github.com/reactionic/reactionic/pull/30) ([johnslemmer](https://github.com/johnslemmer))
+
+## [v0.2.1](https://github.com/reactionic/reactionic/tree/v0.2.1) (2016-04-23)
 **Implemented enhancements:**
 
 - Implement IonSelect [\#11](https://github.com/reactionic/reactionic/issues/11)
