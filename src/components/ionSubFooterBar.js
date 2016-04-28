@@ -16,9 +16,6 @@ var IonSubFooterBar = React.createClass({
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubfooter', true);
   },
-  componentWillUnmount: function() {
-    this.context.ionUpdateHasX('ionHasSubfooter', false);
-  },
   render() {
     var classes = classnames(
       {'bar': true, 'bar-subfooter': true},

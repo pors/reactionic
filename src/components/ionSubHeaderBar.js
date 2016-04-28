@@ -17,9 +17,6 @@ var IonSubHeaderBar = React.createClass({
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasSubheader', true);
   },
-  componentWillUnmount: function() {
-    this.context.ionUpdateHasX('ionHasSubheader', false);
-  },
   render() {
     var classes = classnames(
       {'bar': true, 'bar-subheader': true},

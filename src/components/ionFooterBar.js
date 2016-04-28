@@ -18,9 +18,6 @@ var IonFooterBar = React.createClass({
   componentWillMount: function() {
     this.context.ionUpdateHasX('ionHasFooter', true);
   },
-  componentWillUnmount: function() {
-    this.context.ionUpdateHasX('ionHasFooter', false);
-  },
   render() {
     var classes = classnames(
       {'bar': true, 'bar-footer': true},

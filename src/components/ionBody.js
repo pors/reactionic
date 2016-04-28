@@ -152,6 +152,10 @@ var IonBody = React.createClass({
       if (this.state.ionLoading) { this.ionShowLoading(false); }
       if (!_.isEmpty(this.state.ionActionSheet)) { this.ionUpdateActionSheet({}); }
       if (!_.isEmpty(this.state.ionPopup)) { this.ionUpdatePopup({}); }
+      // reset sub headers/footers
+      this.ionUpdateHasX('ionHasSubheader', false);
+      this.ionUpdateHasX('ionHasFooter', false);
+      this.ionUpdateHasX('ionHasSubfooter', false);
     }
   },
   handleKeyboard: function(e) {
