@@ -39,6 +39,16 @@ Then simply call main() or if you work with Meteor you need to run it with Meteo
 
 See the [kitchensink router](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/router.jsx) for a more extensive example.
 
+**Important**: For React-Ionic to work properly with React-router it is required that `IonBody` has access to the `this.props.location` property (which is set by React-router to the top level Route component: the component that included IonBody). This can be accomplished by passing `this.props.location` as a prop to `IonBody` in your top-level route component:
+
+    return (
+      <IonBody location={this.props.location} >
+        { this.props.children }
+      </IonBody>
+    );
+
+
+
 ## Layout Structure
 
 The overall structure of a typical app will be like: `App > Layout > Page`.
