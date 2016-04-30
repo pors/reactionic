@@ -1,6 +1,6 @@
 # React-Ionic
 
-[![Join the chat at https://gitter.im/pors/reactionic](https://badges.gitter.im/pors/reactionic.svg)](https://gitter.im/pors/reactionic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/pors/reactionic](https://badges.gitter.im/pors/reactionic.svg)](https://gitter.im/pors/reactionic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![NPM Version](https://img.shields.io/npm/v/reactionic.svg)](https://www.npmjs.com/package/reactionic) [![NPM Downloads](https://img.shields.io/npm/dm/reactionic.svg)](https://www.npmjs.com/package/reactionic)
 
 ## React and Ionic: a Perfect Match
 
@@ -41,7 +41,7 @@ There is no step 2. Just go ahead and change things to make it your own. Have a 
 
 ## Status
 
-Please be patient :)
+Getting ready for first official release, currently at 1.0.0-beta
 
 ## Guide
 
@@ -63,6 +63,13 @@ Inspiration and code was "borrowed" from:
 
 * [Nick Wientge](https://github.com/meteoric/meteor-ionic)
 * [Sam Corcos](https://github.com/samcorcos)
+
+Contributors:
+
+* [Mark Pors](https://github.com/pors/)
+* [Gabriel García Seco](https://github.com/gabrielseco)
+* [Charlie van de Kerkhof](https://github.com/primeminister)
+* [John Slemmer](https://github.com/johnslemmer)
 
 **Thanks guys!**
 
