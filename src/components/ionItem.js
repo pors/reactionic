@@ -20,7 +20,8 @@ var IonItem = React.createClass({
     'buttonLeft': React.PropTypes.bool,
     'thumbnailLeft': React.PropTypes.bool,
     'thumbnailRight': React.PropTypes.bool,
-    'customClasses': React.PropTypes.string
+    'customClasses': React.PropTypes.string,
+    'onClick': React.PropTypes.func
   },
   getDefaultProps: function() {
     return {
@@ -37,7 +38,8 @@ var IonItem = React.createClass({
       'buttonLeft': false,
       'thumbnailLeft': false,
       'thumbnailRight': false,
-      'customClasses': ''
+      'customClasses': '',
+      'onClick': null
     };
   },
   render() {
@@ -64,6 +66,12 @@ var IonItem = React.createClass({
         <Link className={classes} to={this.props.link}>
           {this.props.children}
         </Link>
+      );
+    } else if (this.props.onClick) {
+      item = (
+        <div className={classes} onClick={this.props.onClick}>
+          {this.props.children}
+        </div>
       );
     } else {
       item = (
