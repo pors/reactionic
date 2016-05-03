@@ -68,7 +68,7 @@ var IonItem = React.createClass({
         </Link>
       );
     } else if (this.props.onClick) {
-      button = (
+      item = (
         <div className={classes} onClick={this.props.onClick}>
           {this.props.children}
         </div>
