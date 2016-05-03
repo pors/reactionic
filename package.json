@@ -1,6 +1,6 @@
 {
   "name": "reactionic",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "React Ionic Library. Use Ionic to build hybrid mobile apps with React. No Angular needed.",
   "main": "dist/index.js",
   "scripts": {
