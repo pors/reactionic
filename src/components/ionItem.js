@@ -72,7 +72,7 @@ var IonItem = React.createClass({
         <div className={classes} onClick={this.props.onClick}>
           {this.props.children}
         </div>
-      );´
+      );
     } else {
       item = (
         <div className={classes}>
