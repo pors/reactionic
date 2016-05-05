@@ -41,7 +41,7 @@ There is no step 2. Just go ahead and change things to make it your own. Have a 
 
 ## Status
 
-Getting ready for first official release, currently at 1.0.0-beta
+First release is available for use. We're working on support for Ionic v2, no ETA yet.
 
 ## Guide
 
