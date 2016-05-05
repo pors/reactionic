@@ -1,16 +1,25 @@
 # Change Log
 
-## [Unreleased](https://github.com/reactionic/reactionic/tree/HEAD)
-
-[Full Changelog](https://github.com/reactionic/reactionic/compare/v1.0-beta...HEAD)
+## [v1.0](https://github.com/reactionic/reactionic/tree/v1.0) (2016-05-05)
+[Full Changelog](https://github.com/reactionic/reactionic/compare/v1.0-beta...v1.0)
 
 **Implemented enhancements:**
 
 - Upgrade to react 15 [\#28](https://github.com/reactionic/reactionic/issues/28)
 
+**Fixed bugs:**
+
+- IonContent has-subheader class not set correctly [\#31](https://github.com/reactionic/reactionic/issues/31)
+
 **Closed issues:**
 
 - Update guide to reflect react-router v2 changes [\#34](https://github.com/reactionic/reactionic/issues/34)
+- Fix fourseven:scss issue with Meteor 1.3.2+ [\#33](https://github.com/reactionic/reactionic/issues/33)
+
+**Merged pull requests:**
+
+- Add onClick attribute to IonItem [\#37](https://github.com/reactionic/reactionic/pull/37) ([gbhrdt](https://github.com/gbhrdt))
+- removing the disable property that I added to SideMenuContainer \(I th… [\#36](https://github.com/reactionic/reactionic/pull/36) ([johnslemmer](https://github.com/johnslemmer))
 
 ## [v1.0-beta](https://github.com/reactionic/reactionic/tree/v1.0-beta) (2016-04-26)
 [Full Changelog](https://github.com/reactionic/reactionic/compare/v0.2.1...v1.0-beta)
