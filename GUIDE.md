@@ -431,7 +431,7 @@ First define the Popup object, e.g.:
         }]
     }    
 
-Then, to activate the Popup, simply call the ionUpdateActionSheet method:
+Then, to activate the Popup, simply call the ionUpdatePopup method:
 
     this.context.ionUpdatePopup(popupObject)
 
