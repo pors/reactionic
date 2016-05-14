@@ -63,26 +63,19 @@ var IonItem = React.createClass({
     var item;
     if (this.props.link) {
       item = (
-        <Link className={classes} to={this.props.link}>
+        <Link className={classes} to={this.props.link} onClick={this.props.onClick}>
           {this.props.children}
         </Link>
       );
-    } else if (this.props.onClick) {
+    } else {
       item = (
         <div className={classes} onClick={this.props.onClick}>
           {this.props.children}
         </div>
       );
-    } else {
-      item = (
-        <div className={classes}>
-          {this.props.children}
-        </div>
-      );
-    }      
+    }
     return item;
   }
 });
 
 export default IonItem;
-
