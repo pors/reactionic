@@ -66,6 +66,7 @@ var IonBody = React.createClass({
     ionHasFooter: React.PropTypes.bool,
     ionHasSubfooter: React.PropTypes.bool,
     ionSnapper: React.PropTypes.object,
+    ionGetSnapper: React.PropTypes.func,
     ionSetSnapper: React.PropTypes.func,
     ionPopover: React.PropTypes.oneOfType([React.PropTypes.object,React.PropTypes.bool]),
     ionShowPopover: React.PropTypes.func,
@@ -94,12 +95,16 @@ var IonBody = React.createClass({
       ionHasFooter: this.state.ionHasFooter,
       ionHasSubfooter: this.state.ionHasSubfooter,
       ionSnapper: this.state.ionSnapper,
+      ionGetSnapper: this.ionGetSnapper,
       ionSetSnapper: this.ionSetSnapper,
       ionPopover: this.state.ionPopover,
       ionShowPopover: this.ionShowPopover,
       ionActionSheet: this.state.ionActionSheet,
       ionPopup: this.state.ionPopup
     };
+  },
+  ionGetSnapper() {
+    return this.state.ionSnapper;
   },
   ionSetSnapper(snapper) {
     this.setState({ ionSnapper: snapper });
