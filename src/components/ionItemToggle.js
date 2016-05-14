@@ -6,7 +6,7 @@ var IonItemToggle = React.createClass({
     'checked': React.PropTypes.bool,
     'handleChange': React.PropTypes.func,
     'color': React.PropTypes.string,
-    'label': React.PropTypes.string,
+    'label': React.PropTypes.node,
     'customClasses': React.PropTypes.string
   },
   getDefaultProps: function() {
