@@ -13,26 +13,21 @@ var IonContent = React.createClass({
     };
   },
   contextTypes: {
-    ionHasHeader: React.PropTypes.bool,
-    ionHasSubheader: React.PropTypes.bool,
-    ionHasTabs: React.PropTypes.bool,
-    ionHasTabsTop: React.PropTypes.bool,
-    ionHasFooter: React.PropTypes.bool,
-    ionHasSubfooter: React.PropTypes.bool,
+    ionHasX: React.PropTypes.func,
     ionKeyboardHeight: React.PropTypes.number
   },
-  render() {    
+  render() {
     var classes = classnames(
       {'content': true},
       this.props.customClasses,
       {
         'overflow-scroll': (this.props.scroll !== false),
-        'has-header': this.context.ionHasHeader,
-        'has-subheader': this.context.ionHasSubheader,
-        'has-tabs': this.context.ionHasTabs,
-        'has-tabs-top': this.context.ionHasTabsTop,
-        'has-footer': this.context.ionHasFooter,
-        'has-subfooter': this.context.ionHasSubfooter
+        'has-header': this.context.ionHasX('ionHasHeader'),
+        'has-subheader': this.context.ionHasX('ionHasSubheader'),
+        'has-tabs': this.context.ionHasX('ionHasTabs'),
+        'has-tabs-top': this.context.ionHasX('ionHasTabsTop'),
+        'has-footer': this.context.ionHasX('ionHasFooter'),
+        'has-subfooter': this.context.ionHasX('ionHasSubfooter'),
       }
     );
     var divStyle = {};
@@ -42,10 +37,10 @@ var IonContent = React.createClass({
 
     var outerClasses = classnames(
       'scroll-content ionic-scroll',
-      { 'ios-top-margin': !this.context.ionHasHeader }
+      { 'ios-top-margin': !this.context.ionHasX('ionHasHeader') }
     );
 
-    return (      
+    return (
         <div className={ outerClasses } style={divStyle}>
         <div className={ classes } >
           {this.props.children}

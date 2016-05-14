@@ -59,6 +59,7 @@ var IonBody = React.createClass({
     ionShowLoading: React.PropTypes.func,
     ionKeyboardHeight: React.PropTypes.number,
     ionUpdateHasX: React.PropTypes.func,
+    ionHasX: React.PropTypes.func,
     ionHasTabs: React.PropTypes.bool,
     ionHasTabsTop: React.PropTypes.bool,
     ionHasHeader: React.PropTypes.bool,
@@ -88,6 +89,7 @@ var IonBody = React.createClass({
       ionShowLoading: this.ionShowLoading,
       ionKeyboardHeight: this.state.ionKeyboardHeight,
       ionUpdateHasX: this.ionUpdateHasX,
+      ionHasX: this.ionHasX,
       ionHasTabs: this.state.ionHasTabs,
       ionHasTabsTop: this.state.ionHasTabsTop,
       ionHasHeader: this.state.ionHasHeader,
@@ -147,6 +149,12 @@ var IonBody = React.createClass({
     if (hasX in this.state) {
       this.setState({ [hasX]: value });
     }
+  },
+  ionHasX: function(hasX) {
+    if (hasX in this.state) {
+      return this.state[hasX];
+    }
+    return undefined;
   },
   componentWillReceiveProps(nextProps, nextContext) {
     // close modal etc. when navigating away from page (e.g. with browser back button)
