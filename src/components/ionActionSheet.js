@@ -98,12 +98,15 @@ var IonActionSheet = React.createClass({
     var classes = classnames(
       {'action-sheet-wrapper': true, 'action-sheet-up': this.state.isUp}
     );
+    var groupClasses = classnames(
+      {'action-sheet-group': this.state.isUp}
+    );
 
     return (
       <div className={backdropClasses} onClick={onclickCancel}>
         <div className={classes} ref="wrapper">
           <div className="action-sheet">
-            <div className="action-sheet-group">
+            <div className={groupClasses}>
               {titleText}
               {buttons}
             </div>
