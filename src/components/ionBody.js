@@ -138,9 +138,11 @@ var IonBody = React.createClass({
         ionLoading: options
       });
     } else {
-      this.setState({
-        ionLoading: false
-      });
+      if(this.state.ionLoading !== false) {
+        this.setState({
+          ionLoading: false
+        });
+      }
     }
   },
   ionUpdateHasX: function(hasX, value) {
