@@ -8,6 +8,8 @@ var IonButton = React.createClass({
       React.PropTypes.string,
       React.PropTypes.element
     ]),
+    href: React.PropTypes.string,
+    target: React.PropTypes.string,
     customClasses: React.PropTypes.string,
     expand: React.PropTypes.oneOf(['full', 'block']),
     size: React.PropTypes.oneOf(['small', 'large']),
@@ -21,6 +23,8 @@ var IonButton = React.createClass({
   getDefaultProps: function() {
     return {
       link: null,
+      href: null,
+      target: null,
       customClasses: '',
       expand: null,
       size: null,
@@ -81,6 +85,12 @@ var IonButton = React.createClass({
         <Link className={ classes } to={this.props.link} onClick={this.onClick}>
           { this.props.children }
         </Link>
+      );
+    } else if (this.props.href) {
+      button = (
+        <a className={ classes } href={this.props.href} target={this.props.target} onClick={this.onClick}>
+          { this.props.children }
+        </a>
       );
     } else {
       button = (
