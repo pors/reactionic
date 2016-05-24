@@ -3,6 +3,7 @@ import IonBody from './components/ionBody';
 import IonButton from './components/ionButton';
 import IonCard from './components/ionCard';
 import IonContent from './components/ionContent';
+import IonCheckbox from './components/ionCheckbox';
 import IonFooterBar from './components/ionFooterBar';
 import IonHeaderBar from './components/ionHeaderBar';
 import IonIcon from './components/ionIcon';
@@ -43,6 +44,7 @@ module.exports = {
   IonButton: IonButton,
   IonCard: IonCard,
   IonContent: IonContent,
+  IonCheckbox: IonCheckbox,
   IonFooterBar: IonFooterBar,
   IonHeaderBar: IonHeaderBar,
   IonIcon: IonIcon,

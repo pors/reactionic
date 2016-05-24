@@ -20,6 +20,8 @@ var IonItem = React.createClass({
     'buttonLeft': React.PropTypes.bool,
     'thumbnailLeft': React.PropTypes.bool,
     'thumbnailRight': React.PropTypes.bool,
+    'checkboxLeft': React.PropTypes.bool,
+    'checkboxRight': React.PropTypes.bool,
     'customClasses': React.PropTypes.string,
     'onClick': React.PropTypes.func
   },
@@ -38,6 +40,8 @@ var IonItem = React.createClass({
       'buttonLeft': false,
       'thumbnailLeft': false,
       'thumbnailRight': false,
+      'checkboxLeft': false,
+      'checkboxRight': false,
       'customClasses': '',
       'onClick': null
     };
@@ -56,7 +60,9 @@ var IonItem = React.createClass({
        'item-button-right': this.props.buttonRight,
        'item-button-left': this.props.buttonLeft,
        'item-thumbnail-left': this.props.thumbnailLeft,
-       'item-thumbnail-right': this.props.thumbnailRight
+       'item-thumbnail-right': this.props.thumbnailRight,
+       'item-checkbox': this.props.checkboxLeft || this.props.checkboxRight,
+       'item-checkbox-right': this.props.checkboxRight,
       },
       this.props.customClasses
     );
