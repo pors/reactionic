@@ -8,6 +8,8 @@ var IonItem = React.createClass({
       React.PropTypes.string,
       React.PropTypes.element
     ]),
+    href: React.PropTypes.string,
+    target: React.PropTypes.string,
     'wrap': React.PropTypes.bool,
     'divider': React.PropTypes.bool,
     'iconLeft': React.PropTypes.bool,
@@ -28,6 +30,8 @@ var IonItem = React.createClass({
   getDefaultProps: function() {
     return {
       'link': null,
+      href: null,
+      target: null,
       'wrap': false,
       'divider': false,
       'iconLeft': false,
@@ -72,6 +76,12 @@ var IonItem = React.createClass({
         <Link className={classes} to={this.props.link} onClick={this.props.onClick}>
           {this.props.children}
         </Link>
+      );
+    } else if (this.props.href) {
+      item = (
+        <a className={classes} href={this.props.href} target={this.props.target} onClick={this.props.onClick}>
+          {this.props.children}
+        </a>
       );
     } else {
       item = (
