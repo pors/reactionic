@@ -18,7 +18,8 @@ var IonButton = React.createClass({
     iconPosition: React.PropTypes.oneOf(['left', 'right']),
     color: React.PropTypes.string,
     onClick: React.PropTypes.func,
-    backButton: React.PropTypes.bool
+    backButton: React.PropTypes.bool,
+    htmlType: React.PropTypes.oneOf(['submit', 'button', 'reset']) // the value to put in <button type="???">
   },
   getDefaultProps: function() {
     return {
@@ -33,7 +34,8 @@ var IonButton = React.createClass({
       iconPosition: null,
       color: '',
       onClick: null,
-      backButton: false
+      backButton: false,
+      htmlType: null, // by default HTML will use 'submit' as the default when nothing is set.
     };
   },
   contextTypes: {
@@ -94,7 +96,7 @@ var IonButton = React.createClass({
       );
     } else {
       button = (
-        <button className={ classes } onClick={this.onClick}>
+        <button type={this.props.htmlType} className={ classes } onClick={this.onClick}>
           { this.props.children }
         </button>
       );
