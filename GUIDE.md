@@ -113,7 +113,8 @@ The full list of global states is:
     ionHasSubheader
     ionHasFooter
     ionHasSubfooter
-    ionSnapper
+    ionSnapper  // deprecated
+    ionGetSnapper
     ionKeyboard
 
 About most of them you don't need to bother, but they are all accessible like "props" (i.e. read-only) through [context](https://facebook.github.io/react/docs/context.html).
@@ -456,11 +457,32 @@ The side-menu wraps two components inside the `IonSideMenuContainer`: `IonSideMe
 
 A complete example can be found [here](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/layouts/main.jsx).
 
+If only one side menu is desired.  Or other [Snap.js settings](https://github.com/jakiestfu/Snap.js/#settings-and-defaults) would like to be changed during the instantiation of the side menu/s then it is recommended to do so with passing the settings property to the `SideMenuContainer` object like below:
+
+```
+      <IonSideMenuContainer
+        settings={{
+          disable: 'right',
+          hyperextensible: false,
+        }}
+        {...this.props}
+      >
+```
+
+If disabling is desired of the snapper on certain components (slider input, google maps, etc) so that you can't swipe to open the menu then add the following to the surrounding `<div>`:
+
+```
+<div data-snap-ignore="true">
+    ...
+</div>
+```
+
 **More information**
-    
+
 - Example: [Side Menu demo](https://app.pors.net/sideMenus) ([source](https://github.com/reactionic/reactionic-kitchensink/blob/master/app/client/imports/components/sidemenus.jsx))
 - SCSS: [menu.scss](https://github.com/driftyco/ionic/blob/master/scss/_menu.scss)
 - Angular.js ref: [ion-side-menus](http://ionicframework.com/docs/api/directive/ionSideMenus/) 
+- Snap.js: [Snap.js library and reference](https://github.com/jakiestfu/Snap.js/)
 
 ### Slide box
 The Slide Box is a multi-page container where each page can be swiped or dragged between.
