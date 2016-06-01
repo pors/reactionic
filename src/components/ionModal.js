@@ -36,7 +36,8 @@ var IonModal = React.createClass({
     title: React.PropTypes.string,
     closeText: React.PropTypes.string,
     focusFirstInput: React.PropTypes.bool,
-    barClasses: React.PropTypes.string
+    barClasses: React.PropTypes.string,
+    padding: React.PropTypes.bool,
   },
   getDefaultProps: function() {
     return {
@@ -45,7 +46,8 @@ var IonModal = React.createClass({
       title: '',
       closeText: '',
       focusFirstInput: true,
-      barClasses: 'bar-stable'
+      barClasses: 'bar-stable',
+      padding: true,
     };
   },
   contextTypes: {
@@ -103,9 +105,12 @@ var IonModal = React.createClass({
             <h2 className={titleClasses}>{this.props.title}</h2>{closeButton}
           </div>
           <div className="content has-header overflow-scroll">
-            <div className="padding">
-              {this.props.children}
-            </div>
+            {this.props.padding
+              ? <div className="padding">
+                {this.props.children}
+              </div>
+              : this.props.children
+            }
           </div>
         </div>
       );
