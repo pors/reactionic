@@ -19,7 +19,7 @@ var IonPopup = React.createClass({
     ionUpdatePopup: React.PropTypes.func
   },
   buttonClicked: function(e, callback) {
-    e && e.stopPropagation();    
+    e && e.stopPropagation();
     this.close(callback);
   },
   close: function(callback) {
@@ -28,7 +28,7 @@ var IonPopup = React.createClass({
     }
   },
   mixins: [SetTimeoutMixin],
-  componentDidUpdate: function(prevProps, prevState, prevContext) {    
+  componentDidUpdate: function(prevProps, prevState, prevContext) {
     if (_.isEmpty(prevContext.ionPopup) && !_.isEmpty(this.context.ionPopup)) {
       // show popup
       this.setState({ isUp: true });
@@ -62,6 +62,7 @@ var IonPopup = React.createClass({
     var buttons = ionPopup.buttons;
     var cancel = ionPopup.cancel;
     var popupType = ionPopup.popupType;
+    var customClasses = ionPopup.customClasses;
     var ionUpdatePopup = this.context.ionUpdatePopup;
     var onclickCancel = (e) => { this.cancelAction(e); };
 
@@ -128,7 +129,7 @@ var IonPopup = React.createClass({
     default:
       // we assume the type is 'show', no need to do anything
     }
-    
+
     var head = null;
     if (title || subTitle) {
       head = (
@@ -154,21 +155,25 @@ var IonPopup = React.createClass({
       });
       buttons = <div className="popup-buttons">{buttons}</div>
     }
-    
+
     var backdropClasses = classnames(
       {'backdrop': willMount, 'visible active': this.state.isUp}
     );
     var classes = classnames(
       {'popup-container': willMount, 'popup-showing': this.state.isUp, 'active': this.state.isUp && !this.state.closing, 'popup-hidden': this.state.closing}
     );
+    var popupClasses = classnames(
+      'popup',
+      customClasses
+    );
 
     return (
       <div className={backdropClasses}>
         <div className={classes}>
-          <div className="popup">
+          <div className={popupClasses}>
             {head}
             {template}
-            {buttons}      
+            {buttons}
           </div>
         </div>
       </div>
@@ -177,4 +182,3 @@ var IonPopup = React.createClass({
 });
 
 export default IonPopup;
-
