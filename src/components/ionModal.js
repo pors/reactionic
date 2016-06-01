@@ -21,7 +21,7 @@ var IonModalContainer = React.createClass({
               transitionLeaveTimeout={250}
               transitionName="modal"
               className={"modal-"+this.props.animation}
-      >        
+      >
         {this.props.children}
       </ReactCSSTransitionGroup>
     );
@@ -33,7 +33,7 @@ var IonModal = React.createClass({
   propTypes: {
     customClasses: React.PropTypes.string,
     customTemplate: React.PropTypes.bool,
-    title: React.PropTypes.string,    
+    title: React.PropTypes.string,
     closeText: React.PropTypes.string,
     focusFirstInput: React.PropTypes.bool,
     barClasses: React.PropTypes.string
@@ -54,19 +54,19 @@ var IonModal = React.createClass({
     ionPlatform: React.PropTypes.object
   },
   backdropClicked: function(e) {
-    e.preventDefault();
     if (e.target.className.indexOf("modal-backdrop") >= 0) {
       // if clicked on backdrop outside of the modal, close modal
+      e.preventDefault();
       this.context.ionShowModal(false);
-    }    
+    }
   },
   componentDidMount() {
     if(this.props.focusFirstInput) {
       var input = document.querySelector("input"); // select first input
       input && input.focus();
     }
-  },  
-  render() {    
+  },
+  render() {
     var classes = classnames(
       {'modal': true},
       this.props.customClasses
@@ -104,7 +104,7 @@ var IonModal = React.createClass({
           </div>
           <div className="content has-header overflow-scroll">
             <div className="padding">
-              {this.props.children}          
+              {this.props.children}
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ var IonModal = React.createClass({
         <div className="modal-wrapper">
           {contents}
         </div>
-      </div>            
+      </div>
     );
   }
 });
@@ -126,4 +126,3 @@ export { IonModalContainer };
 // @@@@@@@@@@@@@@@@ implement dynamic stuff ???
 
 // Fix default template, see Meteoric
-
