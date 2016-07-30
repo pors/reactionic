@@ -70,7 +70,6 @@ var IonNavBar = React.createClass({
                              leaveActive: 'button-active'
                              } }
             transitionLeave={false}
-            {...this.props}
         >
 
         <LeftButtonContainer setMarginCompensation={this.setMarginCompensation}>{leftButton}</LeftButtonContainer>
@@ -86,7 +85,6 @@ var IonNavBar = React.createClass({
                              leave: 'title-leaving',
                              leaveActive: 'title-active'
                              } }
-            {...this.props}
         >
           <IonTitle marginCompensation={this.state.marginCompensation} customClasses="title-stage">
             { this.props.title }
@@ -104,7 +102,6 @@ var IonNavBar = React.createClass({
                              } }
             transitionLeave={false}
             className="buttons pull-right"
-            {...this.props}
         >
           {this.props.rightButton}
 
