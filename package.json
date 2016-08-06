@@ -1,6 +1,6 @@
 {
   "name": "reactionic",
-  "version": "1.2.0",
+  "version": "1.2.0-beta.0",
   "description": "React Ionic Library. Use Ionic to build hybrid mobile apps with React. No Angular needed.",
   "main": "dist/index.js",
   "scripts": {
@@ -33,9 +33,9 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "lodash": "^4.11.1",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1",
-    "react-addons-css-transition-group": "^15.0.1",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-addons-css-transition-group": "^15.2.1",
     "history": "^2.1.0",
     "react-router": "^2.3.0",
     "react-slick": "^0.12.0",

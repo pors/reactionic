@@ -1,5 +1,41 @@
 # Change Log
 
+## [Unreleased](https://github.com/reactionic/reactionic/tree/HEAD)
+
+[Full Changelog](https://github.com/reactionic/reactionic/compare/v1.0...HEAD)
+
+**Implemented enhancements:**
+
+- IonSideMenu: would be nice to have the possibility to set the width of the side menu [\#46](https://github.com/reactionic/reactionic/issues/46)
+
+**Fixed bugs:**
+
+- Reactionic iOS index page slip [\#44](https://github.com/reactionic/reactionic/issues/44)
+
+**Closed issues:**
+
+- Back button [\#68](https://github.com/reactionic/reactionic/issues/68)
+- Flow Router [\#64](https://github.com/reactionic/reactionic/issues/64)
+- Overwriting scss color vars [\#62](https://github.com/reactionic/reactionic/issues/62)
+- Can I use reactionic with flow-router or iorn:router ? [\#61](https://github.com/reactionic/reactionic/issues/61)
+- IonNavBar leftButton : has anyone experience duplicate left button  [\#60](https://github.com/reactionic/reactionic/issues/60)
+- Text inputs? [\#57](https://github.com/reactionic/reactionic/issues/57)
+- How to Structure your App [\#56](https://github.com/reactionic/reactionic/issues/56)
+- Right side menu will not disable [\#55](https://github.com/reactionic/reactionic/issues/55)
+- Accounts UI for React Ionic [\#53](https://github.com/reactionic/reactionic/issues/53)
+- Pass down props down to the components [\#48](https://github.com/reactionic/reactionic/issues/48)
+- Remove customClasses and start passing down className [\#47](https://github.com/reactionic/reactionic/issues/47)
+- ionPopup never clears this.state.inputValue [\#43](https://github.com/reactionic/reactionic/issues/43)
+- ionSnapper is undefined [\#41](https://github.com/reactionic/reactionic/issues/41)
+- Data loading example [\#40](https://github.com/reactionic/reactionic/issues/40)
+
+**Merged pull requests:**
+
+- Delete props from RouteCSSTransitionGroup [\#70](https://github.com/reactionic/reactionic/pull/70) ([gabrielseco](https://github.com/gabrielseco))
+- Increment minor version [\#50](https://github.com/reactionic/reactionic/pull/50) ([johnslemmer](https://github.com/johnslemmer))
+- ionItem should be able to have a link and onClick.  And big context changes. [\#45](https://github.com/reactionic/reactionic/pull/45) ([johnslemmer](https://github.com/johnslemmer))
+- Fix typo in guide [\#42](https://github.com/reactionic/reactionic/pull/42) ([gbhrdt](https://github.com/gbhrdt))
+
 ## [v1.0](https://github.com/reactionic/reactionic/tree/v1.0) (2016-05-05)
 [Full Changelog](https://github.com/reactionic/reactionic/compare/v1.0-beta...v1.0)
 
